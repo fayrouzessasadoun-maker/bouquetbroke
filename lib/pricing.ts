@@ -1,0 +1,81 @@
+export const BRANDS = [
+  'Floward',
+  'Maison Des Fleurs',
+  'Bliss Flowers',
+  'Forever Rose',
+  'Upscale & Posh',
+  'Black Tulip Flowers',
+  'BloomingBox',
+  '800 Flowers',
+  'Darcey Flowers',
+  'Fine Blooms',
+  'Flower Society',
+  'The Gorgeous Flower Co.',
+  'Florette',
+  'Black and Blanc',
+  'Pitchy',
+  'Bostani',
+  'Ferns N Petals',
+  'Butter Flowers',
+  'Maria German Flowers',
+  'HappyBox',
+  'Other / Unknown',
+]
+
+export const SIZES = ['Small', 'Medium', 'Large', 'Premium'] as const
+
+export type Size = (typeof SIZES)[number]
+
+export const PRICING_TABLE: Record<string, Record<string, number>> = {
+  'Floward':                  { Small: 55,  Medium: 120, Large: 200, Premium: 350 },
+  'Maison Des Fleurs':        { Small: 110, Medium: 200, Large: 320, Premium: 550 },
+  'Bliss Flowers':            { Small: 90,  Medium: 170, Large: 270, Premium: 480 },
+  'Forever Rose':             { Small: 180, Medium: 300, Large: 500, Premium: 900 },
+  'Upscale & Posh':           { Small: 75,  Medium: 150, Large: 250, Premium: 420 },
+  'Black Tulip Flowers':      { Small: 55,  Medium: 110, Large: 180, Premium: 300 },
+  'BloomingBox':              { Small: 80,  Medium: 150, Large: 240, Premium: 400 },
+  '800 Flowers':              { Small: 65,  Medium: 130, Large: 210, Premium: 360 },
+  'Darcey Flowers':           { Small: 80,  Medium: 155, Large: 250, Premium: 430 },
+  'Fine Blooms':              { Small: 90,  Medium: 170, Large: 280, Premium: 460 },
+  'Flower Society':           { Small: 75,  Medium: 145, Large: 230, Premium: 390 },
+  'The Gorgeous Flower Co.':  { Small: 70,  Medium: 140, Large: 220, Premium: 380 },
+  'Florette':                 { Small: 85,  Medium: 160, Large: 260, Premium: 440 },
+  'Black and Blanc':          { Small: 70,  Medium: 135, Large: 215, Premium: 370 },
+  'Pitchy':                   { Small: 75,  Medium: 145, Large: 235, Premium: 400 },
+  'Bostani':                  { Small: 80,  Medium: 155, Large: 245, Premium: 420 },
+  'Ferns N Petals':           { Small: 55,  Medium: 110, Large: 175, Premium: 300 },
+  'Butter Flowers':           { Small: 85,  Medium: 165, Large: 265, Premium: 450 },
+  'Maria German Flowers':     { Small: 110, Medium: 200, Large: 320, Premium: 540 },
+  'HappyBox':                 { Small: 65,  Medium: 125, Large: 200, Premium: 340 },
+  'Other / Unknown':          { Small: 50,  Medium: 100, Large: 160, Premium: 280 },
+}
+
+export const DUBAI_AREAS = [
+  'Downtown Dubai',
+  'Dubai Marina',
+  'Jumeirah',
+  'DIFC',
+  'Business Bay',
+  'Palm Jumeirah',
+  'Deira',
+  'Bur Dubai',
+  'JBR',
+  'JLT',
+  'Al Quoz',
+  'Mirdif',
+  'Arabian Ranches',
+  'Dubai Hills',
+  'Al Barsha',
+  'Dubai Silicon Oasis',
+  'Motor City',
+  'Sports City',
+  'Al Nahda',
+  'Oud Metha',
+]
+
+export const SIZE_DESCRIPTIONS: Record<string, string> = {
+  Small: 'Up to 15 stems or a petite single-variety arrangement',
+  Medium: '15–30 stems, standard bouquet or mid-size box',
+  Large: '30–50 stems, full bouquet or large hat box',
+  Premium: '50+ stems, grand arrangement or luxury presentation',
+}

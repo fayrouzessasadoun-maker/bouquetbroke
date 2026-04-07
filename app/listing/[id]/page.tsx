@@ -294,11 +294,57 @@ export default async function ListingPage({ params }: Props) {
 
           {/* Checkout button */}
           {isActive && listing.ai_price && (
-            <CheckoutButton
-              listingId={listing.id}
-              price={listing.ai_price}
-              title={`${listing.brand} — ${listing.size}`}
-            />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {/* Pay via Ziina */}
+              <a
+                href="https://ziina.com/bouquetbroke"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  background: '#f0ebe4',
+                  color: '#0d0d0d',
+                  fontSize: '10px',
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  padding: '16px 24px',
+                  borderRadius: '2px',
+                  textAlign: 'center',
+                  textDecoration: 'none',
+                }}
+              >
+                Pay via Ziina — AED {total}
+              </a>
+
+              <p
+                style={{
+                  fontSize: '11px',
+                  color: '#555',
+                  lineHeight: 1.7,
+                  letterSpacing: '0.02em',
+                  textAlign: 'center',
+                }}
+              >
+                After payment, WhatsApp us at{' '}
+                <a
+                  href="https://wa.me/971500000000"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: '#888', textDecoration: 'underline' }}
+                >
+                  +971 50 000 0000
+                </a>{' '}
+                with your delivery address and payment screenshot to confirm your order.
+              </p>
+
+              {/* Stripe checkout — disabled for now */}
+              {/* <CheckoutButton
+                listingId={listing.id}
+                price={listing.ai_price}
+                title={`${listing.brand} — ${listing.size}`}
+              /> */}
+            </div>
           )}
         </div>
       </div>

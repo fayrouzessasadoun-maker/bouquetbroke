@@ -40,7 +40,7 @@ export default async function ListingPage({ params }: Props) {
 
   const price = listing.ai_price || 0
   const delivery = 30
-  const platformFee = Math.round(price * 0.15)
+  const platformFee = Math.round(price * 0.10)
   const total = price + delivery + platformFee
 
   const label = {
@@ -249,7 +249,7 @@ export default async function ListingPage({ params }: Props) {
                 {[
                   { label: 'Bouquet', amount: price },
                   { label: 'Delivery (Quiqup)', amount: delivery },
-                  { label: 'Platform fee (15%)', amount: platformFee },
+                  { label: 'Platform fee (10%)', amount: platformFee },
                 ].map(({ label: lbl, amount }) => (
                   <div
                     key={lbl}

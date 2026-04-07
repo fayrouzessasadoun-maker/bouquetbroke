@@ -15,7 +15,7 @@ export async function POST(request: Request) {
 
     const bouquetPrice = Math.round(Number(price) * 100)
     const deliveryPrice = 3000
-    const platformFee = Math.round(Number(price) * 0.15 * 100)
+    const platformFee = Math.round(Number(price) * 0.10 * 100)
 
     const origin = request.headers.get('origin') || 'http://localhost:3000'
 
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
           price_data: {
             currency: 'aed',
             product_data: {
-              name: 'Platform fee (15%)',
+              name: 'Platform fee (10%)',
               description: 'Bouquet Broke service fee',
             },
             unit_amount: platformFee,

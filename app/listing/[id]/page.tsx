@@ -328,12 +328,12 @@ export default async function ListingPage({ params }: Props) {
               >
                 After payment, WhatsApp us at{' '}
                 <a
-                  href="https://wa.me/971500000000"
+                  href="https://wa.me/97150798209"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: '#888', textDecoration: 'underline' }}
                 >
-                  +971 50 000 0000
+                  +971 50 798 209
                 </a>{' '}
                 with your delivery address and payment screenshot to confirm your order.
               </p>

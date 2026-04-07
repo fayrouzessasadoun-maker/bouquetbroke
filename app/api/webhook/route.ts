@@ -35,11 +35,19 @@ export async function POST(request: Request) {
         .update({ is_sold: true })
         .eq('id', listingId)
 
+      const addr = session.shipping_details?.address
+      const shippingAddress = addr
+        ? [addr.line1, addr.line2, addr.city, addr.state, addr.postal_code, addr.country]
+            .filter(Boolean)
+            .join(', ')
+        : null
+
       await supabase.from('orders').insert({
         listing_id: listingId,
         stripe_session_id: session.id,
         buyer_email: session.customer_details?.email || null,
         amount_total: session.amount_total ? session.amount_total / 100 : null,
+        shipping_address: shippingAddress,
       })
     }
   }

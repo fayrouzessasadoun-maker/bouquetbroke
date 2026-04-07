@@ -43,3 +43,5 @@ create policy "Users can insert their own listings"
 create policy "Service role can do everything"
   on public.listings for all
   using (true);
+
+ALTER TABLE public.orders ADD COLUMN IF NOT EXISTS shipping_address text;

@@ -297,7 +297,7 @@ export default async function ListingPage({ params }: Props) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {/* Pay via Ziina */}
               <a
-                href="https://pay.ziina.me/bouquetbrokepay"
+                href="https://pay.ziina.com/bouquetbrokepay"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

@@ -48,7 +48,13 @@ cp .env.example .env.local
 
 ## Supabase Setup
 
-### 1. Create a project
+### 1. Disable email confirmation (required)
+
+In the Supabase dashboard → **Authentication** → **Email** → turn **off** the "Confirm email" toggle.
+
+This allows users to sign up and immediately access the app. Without this, every new user must verify their email before they can log in, which blocks the sell flow.
+
+### 2. Create a project
 
 Go to [supabase.com](https://supabase.com), create a new project, and copy your credentials.
 

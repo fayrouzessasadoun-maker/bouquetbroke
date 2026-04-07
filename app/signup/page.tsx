@@ -27,12 +27,11 @@ export default function SignupPage() {
       return
     }
 
-    const { error: signUpError } = await supabase.auth.signUp({
+    const { data, error: signUpError } = await supabase.auth.signUp({
       email,
       password,
       options: {
         data: { full_name: fullName },
-        emailRedirectTo: `${window.location.origin}/sell`,
       },
     })
 
@@ -43,7 +42,15 @@ export default function SignupPage() {
       return
     }
 
-    setSuccess(true)
+    // If email confirmation is disabled in Supabase, a session is returned immediately.
+    // Redirect straight to /sell either way — no waiting for inbox.
+    if (data.session) {
+      router.push('/sell')
+      router.refresh()
+    } else {
+      // Supabase still has email confirmation on — show the inbox prompt as fallback.
+      setSuccess(true)
+    }
   }
 
   const inputStyle = {
@@ -128,7 +135,7 @@ export default function SignupPage() {
             type="text"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-            placeholder="Layla Al Maktoum"
+            placeholder="Layla M."
             required
             style={inputStyle}
           />

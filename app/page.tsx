@@ -48,7 +48,7 @@ export default async function HomePage() {
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage: 'url(/Red_lips_and_rose_elegance__1_.png)',
+            backgroundImage: 'url(/hero.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center right',
           }}

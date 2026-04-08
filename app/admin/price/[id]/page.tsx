@@ -99,6 +99,10 @@ export default function AdminPricePage() {
       setApproveError('Enter a valid price.')
       return
     }
+    if (Number(finalPrice) < 100) {
+      setApproveError('Price cannot be below the minimum of AED 100.')
+      return
+    }
     setApproving(true)
     setApproveError('')
 
@@ -577,8 +581,8 @@ export default function AdminPricePage() {
               {approving ? 'Publishing...' : 'Approve & Publish'}
             </button>
 
-            <p style={{ fontSize: '10px', color: '#444', marginTop: '10px', textAlign: 'center' }}>
-              Listing will expire in 24 hours after publishing.
+            <p style={{ fontSize: '10px', color: '#555', marginTop: '10px', textAlign: 'center' }}>
+              Minimum price: AED 100 &nbsp;·&nbsp; Listing expires in 24 hours after publishing.
             </p>
           </div>
         </div>

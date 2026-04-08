@@ -97,6 +97,10 @@ Return ONLY a valid JSON object with no markdown formatting:
       return NextResponse.json({ error: 'AI returned invalid JSON.' }, { status: 500 })
     }
 
+    if (parsed.suggestedPrice < 100) {
+      parsed.suggestedPrice = 100
+    }
+
     await supabase
       .from('listings')
       .update({

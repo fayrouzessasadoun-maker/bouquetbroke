@@ -112,7 +112,7 @@ export default function SellPage() {
     background: '#0d0d0d',
     border: '1px solid #222',
     borderRadius: '2px' as const,
-    color: '#e8e0d8',
+    color: '#ffffff',
     fontSize: '13px',
     fontWeight: 300,
     padding: '12px 14px',
@@ -121,9 +121,9 @@ export default function SellPage() {
 
   const labelStyle = {
     fontSize: '10px',
-    letterSpacing: '0.16em',
+    letterSpacing: '0.18em',
     textTransform: 'uppercase' as const,
-    color: '#555',
+    color: '#888',
     display: 'block',
     marginBottom: '8px',
   }
@@ -131,7 +131,7 @@ export default function SellPage() {
   if (authLoading) {
     return (
       <div style={{ padding: '120px 24px', textAlign: 'center' }}>
-        <p style={{ fontSize: '10px', letterSpacing: '0.16em', color: '#444' }}>Loading...</p>
+        <p style={{ fontSize: '10px', letterSpacing: '0.18em', color: '#444' }}>Loading...</p>
       </div>
     )
   }
@@ -164,13 +164,13 @@ export default function SellPage() {
             fontFamily: "'Cormorant Garamond', Georgia, serif",
             fontSize: '36px',
             fontWeight: 300,
-            color: '#e8e0d8',
+            color: '#ffffff',
             marginBottom: '20px',
           }}
         >
           We&apos;ve got it.
         </h1>
-        <p style={{ fontSize: '13px', color: '#888', lineHeight: 1.7, marginBottom: '32px' }}>
+        <p style={{ fontSize: '13px', color: '#cccccc', lineHeight: 1.7, marginBottom: '32px' }}>
           Your listing is being reviewed. We&apos;ll price it and publish within the hour.
         </p>
         <button
@@ -179,7 +179,7 @@ export default function SellPage() {
             background: '#f0ebe4',
             color: '#0d0d0d',
             fontSize: '10px',
-            letterSpacing: '0.16em',
+            letterSpacing: '0.18em',
             textTransform: 'uppercase',
             padding: '14px 28px',
             borderRadius: '2px',
@@ -201,7 +201,7 @@ export default function SellPage() {
           fontSize: '9px',
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
-          color: '#555',
+          color: '#888',
           marginBottom: '12px',
         }}
       >
@@ -212,13 +212,13 @@ export default function SellPage() {
           fontFamily: "'Cormorant Garamond', Georgia, serif",
           fontSize: '40px',
           fontWeight: 300,
-          color: '#e8e0d8',
+          color: '#ffffff',
           marginBottom: '8px',
         }}
       >
         List for Resale
       </h1>
-      <p style={{ fontSize: '13px', color: '#888', marginBottom: '48px' }}>
+      <p style={{ fontSize: '13px', color: '#cccccc', marginBottom: '48px' }}>
         We price it. You get paid.
       </p>
 
@@ -236,7 +236,7 @@ export default function SellPage() {
             style={{
               flex: 1,
               height: '2px',
-              background: step >= s.n ? '#e8e0d8' : '#222',
+              background: step >= s.n ? '#ffffff' : '#222',
               transition: 'background 0.2s ease',
             }}
           />
@@ -249,7 +249,7 @@ export default function SellPage() {
           fontSize: '9px',
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
-          color: '#555',
+          color: '#888',
           marginBottom: '32px',
         }}
       >
@@ -289,7 +289,7 @@ export default function SellPage() {
                   background: 'transparent',
                   border: '1px solid #333',
                   borderRadius: '2px',
-                  color: '#888',
+                  color: '#cccccc',
                   fontSize: '10px',
                   letterSpacing: '0.12em',
                   padding: '10px 16px',
@@ -321,7 +321,7 @@ export default function SellPage() {
               <span
                 style={{
                   fontSize: '10px',
-                  letterSpacing: '0.16em',
+                  letterSpacing: '0.18em',
                   textTransform: 'uppercase',
                   color: '#444',
                 }}
@@ -348,7 +348,7 @@ export default function SellPage() {
               background: '#f0ebe4',
               color: '#0d0d0d',
               fontSize: '10px',
-              letterSpacing: '0.16em',
+              letterSpacing: '0.18em',
               textTransform: 'uppercase',
               padding: '14px',
               borderRadius: '2px',
@@ -386,7 +386,7 @@ export default function SellPage() {
                 background: 'transparent',
                 border: '1px solid #333',
                 borderRadius: '2px',
-                color: '#888',
+                color: '#cccccc',
                 fontSize: '10px',
                 letterSpacing: '0.12em',
                 padding: '14px',
@@ -406,7 +406,7 @@ export default function SellPage() {
                 background: '#f0ebe4',
                 color: '#0d0d0d',
                 fontSize: '10px',
-                letterSpacing: '0.16em',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 padding: '14px',
                 borderRadius: '2px',
@@ -441,15 +441,15 @@ export default function SellPage() {
                 <p
                   style={{
                     fontSize: '10px',
-                    letterSpacing: '0.16em',
+                    letterSpacing: '0.18em',
                     textTransform: 'uppercase',
-                    color: size === s ? '#e8e0d8' : '#888',
+                    color: size === s ? '#ffffff' : '#cccccc',
                     marginBottom: '4px',
                   }}
                 >
                   {s}
                 </p>
-                <p style={{ fontSize: '12px', color: '#555' }}>
+                <p style={{ fontSize: '12px', color: '#888' }}>
                   {SIZE_DESCRIPTIONS[s]}
                 </p>
               </button>
@@ -464,7 +464,7 @@ export default function SellPage() {
                 background: 'transparent',
                 border: '1px solid #333',
                 borderRadius: '2px',
-                color: '#888',
+                color: '#cccccc',
                 fontSize: '10px',
                 letterSpacing: '0.12em',
                 padding: '14px',
@@ -484,7 +484,7 @@ export default function SellPage() {
                 background: '#f0ebe4',
                 color: '#0d0d0d',
                 fontSize: '10px',
-                letterSpacing: '0.16em',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 padding: '14px',
                 borderRadius: '2px',
@@ -523,7 +523,7 @@ export default function SellPage() {
                 background: 'transparent',
                 border: '1px solid #333',
                 borderRadius: '2px',
-                color: '#888',
+                color: '#cccccc',
                 fontSize: '10px',
                 letterSpacing: '0.12em',
                 padding: '14px',
@@ -543,7 +543,7 @@ export default function SellPage() {
                 background: '#f0ebe4',
                 color: '#0d0d0d',
                 fontSize: '10px',
-                letterSpacing: '0.16em',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 padding: '14px',
                 borderRadius: '2px',
@@ -609,7 +609,7 @@ export default function SellPage() {
                 background: 'transparent',
                 border: '1px solid #333',
                 borderRadius: '2px',
-                color: '#888',
+                color: '#cccccc',
                 fontSize: '10px',
                 letterSpacing: '0.12em',
                 padding: '14px',
@@ -623,10 +623,10 @@ export default function SellPage() {
               disabled={loading}
               style={{
                 flex: 2,
-                background: loading ? '#888' : '#f0ebe4',
+                background: loading ? '#cccccc' : '#f0ebe4',
                 color: '#0d0d0d',
                 fontSize: '10px',
-                letterSpacing: '0.16em',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 padding: '14px',
                 borderRadius: '2px',

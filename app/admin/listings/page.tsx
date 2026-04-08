@@ -62,7 +62,7 @@ export default function AdminListingsPage() {
     background: '#0d0d0d',
     border: '1px solid #222',
     borderRadius: '2px' as const,
-    color: '#e8e0d8',
+    color: '#ffffff',
     fontSize: '13px',
     padding: '14px',
     width: '100%',
@@ -76,7 +76,7 @@ export default function AdminListingsPage() {
             fontSize: '9px',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: '#555',
+            color: '#888',
             marginBottom: '12px',
           }}
         >
@@ -87,7 +87,7 @@ export default function AdminListingsPage() {
             fontFamily: "'Cormorant Garamond', Georgia, serif",
             fontSize: '36px',
             fontWeight: 300,
-            color: '#e8e0d8',
+            color: '#ffffff',
             marginBottom: '32px',
           }}
         >
@@ -110,7 +110,7 @@ export default function AdminListingsPage() {
               background: '#f0ebe4',
               color: '#0d0d0d',
               fontSize: '10px',
-              letterSpacing: '0.16em',
+              letterSpacing: '0.18em',
               textTransform: 'uppercase',
               padding: '14px',
               borderRadius: '2px',
@@ -141,7 +141,7 @@ export default function AdminListingsPage() {
               fontSize: '9px',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#555',
+              color: '#888',
               marginBottom: '8px',
             }}
           >
@@ -152,7 +152,7 @@ export default function AdminListingsPage() {
               fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontSize: '36px',
               fontWeight: 300,
-              color: '#e8e0d8',
+              color: '#ffffff',
             }}
           >
             Pending Listings
@@ -164,7 +164,7 @@ export default function AdminListingsPage() {
             background: 'transparent',
             border: '1px solid #333',
             borderRadius: '2px',
-            color: '#888',
+            color: '#cccccc',
             fontSize: '10px',
             letterSpacing: '0.12em',
             padding: '10px 16px',
@@ -176,14 +176,14 @@ export default function AdminListingsPage() {
       </div>
 
       {loading ? (
-        <p style={{ fontSize: '10px', letterSpacing: '0.16em', color: '#444' }}>Loading...</p>
+        <p style={{ fontSize: '10px', letterSpacing: '0.18em', color: '#444' }}>Loading...</p>
       ) : listings.length === 0 ? (
         <p
           style={{
             fontFamily: "'Cormorant Garamond', Georgia, serif",
             fontSize: '20px',
             fontStyle: 'italic',
-            color: '#555',
+            color: '#888',
             padding: '60px 0',
           }}
         >
@@ -208,7 +208,7 @@ export default function AdminListingsPage() {
                       fontSize: '10px',
                       letterSpacing: '0.12em',
                       textTransform: 'uppercase',
-                      color: '#555',
+                      color: '#888',
                       padding: '12px 16px',
                       fontWeight: 400,
                     }}
@@ -246,16 +246,16 @@ export default function AdminListingsPage() {
                       />
                     )}
                   </td>
-                  <td style={{ padding: '12px 16px', color: '#e8e0d8' }}>
+                  <td style={{ padding: '12px 16px', color: '#ffffff' }}>
                     {listing.brand}
                   </td>
-                  <td style={{ padding: '12px 16px', color: '#888' }}>
+                  <td style={{ padding: '12px 16px', color: '#cccccc' }}>
                     {listing.size}
                   </td>
-                  <td style={{ padding: '12px 16px', color: '#888' }}>
+                  <td style={{ padding: '12px 16px', color: '#cccccc' }}>
                     {listing.area}
                   </td>
-                  <td style={{ padding: '12px 16px', color: '#555' }}>
+                  <td style={{ padding: '12px 16px', color: '#888' }}>
                     {new Date(listing.created_at).toLocaleString('en-GB', {
                       day: '2-digit',
                       month: 'short',

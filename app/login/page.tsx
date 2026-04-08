@@ -42,7 +42,7 @@ function LoginForm() {
     background: '#0d0d0d',
     border: '1px solid #222',
     borderRadius: '2px' as const,
-    color: '#e8e0d8',
+    color: '#ffffff',
     fontSize: '13px',
     fontWeight: 300,
     padding: '14px',
@@ -52,9 +52,9 @@ function LoginForm() {
 
   const labelStyle = {
     fontSize: '10px',
-    letterSpacing: '0.16em',
+    letterSpacing: '0.18em',
     textTransform: 'uppercase' as const,
-    color: '#555',
+    color: '#888',
     display: 'block',
     marginBottom: '8px',
   }
@@ -66,7 +66,7 @@ function LoginForm() {
           fontSize: '9px',
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
-          color: '#555',
+          color: '#888',
           marginBottom: '12px',
         }}
       >
@@ -77,7 +77,7 @@ function LoginForm() {
           fontFamily: "'Cormorant Garamond', Georgia, serif",
           fontSize: '40px',
           fontWeight: 300,
-          color: '#e8e0d8',
+          color: '#ffffff',
           marginBottom: '40px',
         }}
       >
@@ -119,10 +119,10 @@ function LoginForm() {
           type="submit"
           disabled={loading}
           style={{
-            background: loading ? '#888' : '#f0ebe4',
+            background: loading ? '#cccccc' : '#f0ebe4',
             color: '#0d0d0d',
             fontSize: '10px',
-            letterSpacing: '0.16em',
+            letterSpacing: '0.18em',
             textTransform: 'uppercase',
             padding: '16px',
             borderRadius: '2px',
@@ -139,12 +139,12 @@ function LoginForm() {
         style={{
           marginTop: '32px',
           fontSize: '12px',
-          color: '#555',
+          color: '#888',
           textAlign: 'center',
         }}
       >
         New here?{' '}
-        <Link href="/signup" style={{ color: '#888' }}>
+        <Link href="/signup" style={{ color: '#cccccc' }}>
           Create an account
         </Link>
       </p>
@@ -156,7 +156,7 @@ export default function LoginPage() {
   return (
     <Suspense fallback={
       <div style={{ padding: '120px 24px', textAlign: 'center' }}>
-        <p style={{ fontSize: '10px', letterSpacing: '0.16em', color: '#444' }}>Loading...</p>
+        <p style={{ fontSize: '10px', letterSpacing: '0.18em', color: '#444' }}>Loading...</p>
       </div>
     }>
       <LoginForm />

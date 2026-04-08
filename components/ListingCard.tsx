@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import CountdownTimer from './CountdownTimer'
+import { PRICING_TABLE } from '@/lib/pricing'
 import type { Listing } from '@/lib/types'
 
 interface Props {
@@ -46,7 +47,7 @@ export default function ListingCard({ listing }: Props) {
                 justifyContent: 'center',
               }}
             >
-              <span style={{ color: '#333', fontSize: '10px', letterSpacing: '0.16em' }}>
+              <span style={{ color: '#333', fontSize: '10px', letterSpacing: '0.18em' }}>
                 NO PHOTO
               </span>
             </div>
@@ -57,9 +58,9 @@ export default function ListingCard({ listing }: Props) {
             className="absolute top-2 right-2"
             style={{
               fontSize: '9px',
-              letterSpacing: '0.16em',
+              letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: '#555',
+              color: '#888',
               background: 'rgba(13,13,13,0.85)',
               padding: '3px 6px',
             }}
@@ -88,7 +89,7 @@ export default function ListingCard({ listing }: Props) {
             >
               <span
                 style={{
-                  color: '#e8e0d8',
+                  color: '#ffffff',
                   fontSize: '10px',
                   letterSpacing: '0.2em',
                   textTransform: 'uppercase',
@@ -106,9 +107,9 @@ export default function ListingCard({ listing }: Props) {
           <p
             style={{
               fontSize: '9px',
-              letterSpacing: '0.16em',
+              letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: '#555',
+              color: '#888',
               marginBottom: '6px',
             }}
           >
@@ -121,7 +122,7 @@ export default function ListingCard({ listing }: Props) {
               fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontSize: '17px',
               fontWeight: 300,
-              color: '#e8e0d8',
+              color: '#ffffff',
               marginBottom: '4px',
               lineHeight: '1.3',
             }}
@@ -134,7 +135,7 @@ export default function ListingCard({ listing }: Props) {
             style={{
               fontSize: '10px',
               letterSpacing: '0.08em',
-              color: '#555',
+              color: '#888',
               marginBottom: '12px',
             }}
           >
@@ -143,16 +144,35 @@ export default function ListingCard({ listing }: Props) {
 
           {/* Price + Buy */}
           <div className="flex items-center justify-between">
-            <span
-              style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontSize: '22px',
-                fontWeight: 300,
-                color: '#e8e0d8',
-              }}
-            >
-              {listing.ai_price ? `AED ${listing.ai_price}` : '—'}
-            </span>
+            <div>
+              {/* Crossed-out retail reference price */}
+              {listing.ai_price && listing.brand && listing.size &&
+                PRICING_TABLE[listing.brand]?.[listing.size] && (
+                <p
+                  style={{
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontSize: '13px',
+                    fontWeight: 300,
+                    color: '#555',
+                    textDecoration: 'line-through',
+                    marginBottom: '2px',
+                    lineHeight: 1,
+                  }}
+                >
+                  AED {PRICING_TABLE[listing.brand][listing.size]}
+                </p>
+              )}
+              <span
+                style={{
+                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontSize: '22px',
+                  fontWeight: 300,
+                  color: '#ffffff',
+                }}
+              >
+                {listing.ai_price ? `AED ${listing.ai_price}` : '—'}
+              </span>
+            </div>
 
             {!inactive && (
               <button
@@ -160,7 +180,7 @@ export default function ListingCard({ listing }: Props) {
                   background: '#f0ebe4',
                   color: '#0d0d0d',
                   fontSize: '10px',
-                  letterSpacing: '0.16em',
+                  letterSpacing: '0.18em',
                   textTransform: 'uppercase',
                   padding: '8px 14px',
                   borderRadius: '2px',

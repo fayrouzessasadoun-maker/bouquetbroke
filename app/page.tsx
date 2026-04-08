@@ -135,7 +135,7 @@ export default async function HomePage() {
             style={{
               fontSize: '13px',
               fontWeight: 300,
-              color: '#888',
+              color: '#cccccc',
               letterSpacing: '0.08em',
               marginBottom: '32px',
             }}
@@ -150,7 +150,7 @@ export default async function HomePage() {
                 background: '#f0ebe4',
                 color: '#0d0d0d',
                 fontSize: '10px',
-                letterSpacing: '0.16em',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 padding: '14px 28px',
                 borderRadius: '2px',
@@ -163,9 +163,9 @@ export default async function HomePage() {
               href="/sell"
               style={{
                 background: 'transparent',
-                color: '#888',
+                color: '#cccccc',
                 fontSize: '10px',
-                letterSpacing: '0.16em',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 padding: '14px 28px',
                 borderRadius: '2px',
@@ -203,7 +203,7 @@ export default async function HomePage() {
               fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontSize: '32px',
               fontWeight: 300,
-              color: '#e8e0d8',
+              color: '#ffffff',
             }}
           >
             Live Listings
@@ -212,9 +212,9 @@ export default async function HomePage() {
             href="/browse"
             style={{
               fontSize: '10px',
-              letterSpacing: '0.16em',
+              letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: '#555',
+              color: '#888',
             }}
           >
             View All
@@ -239,7 +239,7 @@ export default async function HomePage() {
               fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontSize: '20px',
               fontStyle: 'italic',
-              color: '#555',
+              color: '#888',
               textAlign: 'center',
               padding: '60px 0',
             }}
@@ -264,7 +264,7 @@ export default async function HomePage() {
             fontSize: '10px',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: '#555',
+            color: '#888',
             marginBottom: '20px',
           }}
         >
@@ -275,7 +275,7 @@ export default async function HomePage() {
             fontFamily: "'Cormorant Garamond', Georgia, serif",
             fontSize: 'clamp(32px, 5vw, 52px)',
             fontWeight: 300,
-            color: '#e8e0d8',
+            color: '#ffffff',
             marginBottom: '16px',
           }}
         >
@@ -285,7 +285,7 @@ export default async function HomePage() {
         <p
           style={{
             fontSize: '13px',
-            color: '#888',
+            color: '#cccccc',
             letterSpacing: '0.04em',
             marginBottom: '36px',
             maxWidth: '480px',
@@ -301,7 +301,7 @@ export default async function HomePage() {
             background: '#f0ebe4',
             color: '#0d0d0d',
             fontSize: '10px',
-            letterSpacing: '0.16em',
+            letterSpacing: '0.18em',
             textTransform: 'uppercase',
             padding: '14px 32px',
             borderRadius: '2px',
@@ -332,7 +332,7 @@ export default async function HomePage() {
               fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontSize: '18px',
               fontWeight: 300,
-              color: '#e8e0d8',
+              color: '#ffffff',
               marginBottom: '8px',
             }}
           >
@@ -354,9 +354,9 @@ export default async function HomePage() {
               href={href}
               style={{
                 fontSize: '10px',
-                letterSpacing: '0.16em',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: '#555',
+                color: '#888',
               }}
             >
               {label}

@@ -46,9 +46,9 @@ export default function CountdownTimer({ expiresAt, className }: Props) {
     <span
       className={className}
       style={{
-        color: isExpired ? '#555' : isUnder3Hours ? '#c0392b' : '#555',
+        color: isExpired ? '#888' : isUnder3Hours ? '#c0392b' : '#888',
         fontSize: '10px',
-        letterSpacing: '0.16em',
+        letterSpacing: '0.18em',
         textTransform: 'uppercase',
         fontFamily: "'Jost', system-ui, sans-serif",
       }}

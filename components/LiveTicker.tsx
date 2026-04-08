@@ -43,9 +43,9 @@ export default function LiveTicker({ listings }: Props) {
                 display: 'inline-block',
                 marginRight: '60px',
                 fontSize: '10px',
-                letterSpacing: '0.16em',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: '#555',
+                color: '#888',
               }}
             >
               {listing.brand} &middot; {listing.area} &middot;{' '}

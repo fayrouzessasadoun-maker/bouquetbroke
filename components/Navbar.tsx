@@ -60,7 +60,7 @@ export default function Navbar() {
               fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontSize: '20px',
               fontWeight: 300,
-              color: '#e8e0d8',
+              color: '#ffffff',
               letterSpacing: '0.04em',
             }}
           >
@@ -75,9 +75,9 @@ export default function Navbar() {
             href="/browse"
             style={{
               fontSize: '10px',
-              letterSpacing: '0.16em',
+              letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: pathname === '/browse' ? '#e8e0d8' : '#888',
+              color: pathname === '/browse' ? '#ffffff' : '#cccccc',
               textDecoration: 'none',
             }}
           >
@@ -88,9 +88,9 @@ export default function Navbar() {
             href="/sell"
             style={{
               fontSize: '10px',
-              letterSpacing: '0.16em',
+              letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: pathname === '/sell' ? '#e8e0d8' : '#888',
+              color: pathname === '/sell' ? '#ffffff' : '#cccccc',
               textDecoration: 'none',
             }}
           >
@@ -105,7 +105,7 @@ export default function Navbar() {
                     style={{
                       fontSize: '10px',
                       letterSpacing: '0.08em',
-                      color: '#555',
+                      color: '#888',
                       maxWidth: '160px',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
@@ -118,9 +118,9 @@ export default function Navbar() {
                     onClick={handleLogout}
                     style={{
                       fontSize: '10px',
-                      letterSpacing: '0.16em',
+                      letterSpacing: '0.18em',
                       textTransform: 'uppercase',
-                      color: '#888',
+                      color: '#cccccc',
                       background: 'none',
                       border: 'none',
                       cursor: 'pointer',
@@ -136,9 +136,9 @@ export default function Navbar() {
                     href="/login"
                     style={{
                       fontSize: '10px',
-                      letterSpacing: '0.16em',
+                      letterSpacing: '0.18em',
                       textTransform: 'uppercase',
-                      color: '#888',
+                      color: '#cccccc',
                       textDecoration: 'none',
                     }}
                   >
@@ -148,7 +148,7 @@ export default function Navbar() {
                     href="/signup"
                     style={{
                       fontSize: '10px',
-                      letterSpacing: '0.16em',
+                      letterSpacing: '0.18em',
                       textTransform: 'uppercase',
                       color: '#0d0d0d',
                       background: '#f0ebe4',

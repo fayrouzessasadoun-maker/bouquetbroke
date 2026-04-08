@@ -45,10 +45,10 @@ export default function CheckoutButton({ listingId, price, title }: Props) {
         disabled={loading}
         style={{
           width: '100%',
-          background: loading ? '#888' : '#f0ebe4',
+          background: loading ? '#cccccc' : '#f0ebe4',
           color: '#0d0d0d',
           fontSize: '10px',
-          letterSpacing: '0.16em',
+          letterSpacing: '0.18em',
           textTransform: 'uppercase',
           padding: '16px 24px',
           borderRadius: '2px',

@@ -15,7 +15,7 @@ export default function SuccessPage() {
           fontSize: '9px',
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
-          color: '#555',
+          color: '#888',
           marginBottom: '20px',
         }}
       >
@@ -27,7 +27,7 @@ export default function SuccessPage() {
           fontFamily: "'Cormorant Garamond', Georgia, serif",
           fontSize: 'clamp(32px, 6vw, 52px)',
           fontWeight: 300,
-          color: '#e8e0d8',
+          color: '#ffffff',
           lineHeight: 1.2,
           marginBottom: '24px',
         }}
@@ -47,7 +47,7 @@ export default function SuccessPage() {
       <p
         style={{
           fontSize: '13px',
-          color: '#888',
+          color: '#cccccc',
           lineHeight: 1.8,
           marginBottom: '48px',
         }}
@@ -64,7 +64,7 @@ export default function SuccessPage() {
             background: '#f0ebe4',
             color: '#0d0d0d',
             fontSize: '10px',
-            letterSpacing: '0.16em',
+            letterSpacing: '0.18em',
             textTransform: 'uppercase',
             padding: '14px 28px',
             borderRadius: '2px',
@@ -77,9 +77,9 @@ export default function SuccessPage() {
           href="/"
           style={{
             background: 'transparent',
-            color: '#888',
+            color: '#cccccc',
             fontSize: '10px',
-            letterSpacing: '0.16em',
+            letterSpacing: '0.18em',
             textTransform: 'uppercase',
             padding: '14px 28px',
             borderRadius: '2px',

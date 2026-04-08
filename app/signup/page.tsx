@@ -57,7 +57,7 @@ export default function SignupPage() {
     background: '#0d0d0d',
     border: '1px solid #222',
     borderRadius: '2px' as const,
-    color: '#e8e0d8',
+    color: '#ffffff',
     fontSize: '13px',
     fontWeight: 300,
     padding: '14px',
@@ -67,9 +67,9 @@ export default function SignupPage() {
 
   const labelStyle = {
     fontSize: '10px',
-    letterSpacing: '0.16em',
+    letterSpacing: '0.18em',
     textTransform: 'uppercase' as const,
-    color: '#555',
+    color: '#888',
     display: 'block',
     marginBottom: '8px',
   }
@@ -89,14 +89,14 @@ export default function SignupPage() {
             fontFamily: "'Cormorant Garamond', Georgia, serif",
             fontSize: '36px',
             fontWeight: 300,
-            color: '#e8e0d8',
+            color: '#ffffff',
             marginBottom: '16px',
           }}
         >
           Check your inbox.
         </h1>
-        <p style={{ fontSize: '13px', color: '#888', lineHeight: 1.7 }}>
-          We sent a confirmation email to <strong style={{ color: '#e8e0d8' }}>{email}</strong>.
+        <p style={{ fontSize: '13px', color: '#cccccc', lineHeight: 1.7 }}>
+          We sent a confirmation email to <strong style={{ color: '#ffffff' }}>{email}</strong>.
           Click the link to verify your account and start selling.
         </p>
       </div>
@@ -110,7 +110,7 @@ export default function SignupPage() {
           fontSize: '9px',
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
-          color: '#555',
+          color: '#888',
           marginBottom: '12px',
         }}
       >
@@ -121,7 +121,7 @@ export default function SignupPage() {
           fontFamily: "'Cormorant Garamond', Georgia, serif",
           fontSize: '40px',
           fontWeight: 300,
-          color: '#e8e0d8',
+          color: '#ffffff',
           marginBottom: '40px',
         }}
       >
@@ -175,10 +175,10 @@ export default function SignupPage() {
           type="submit"
           disabled={loading}
           style={{
-            background: loading ? '#888' : '#f0ebe4',
+            background: loading ? '#cccccc' : '#f0ebe4',
             color: '#0d0d0d',
             fontSize: '10px',
-            letterSpacing: '0.16em',
+            letterSpacing: '0.18em',
             textTransform: 'uppercase',
             padding: '16px',
             borderRadius: '2px',
@@ -195,12 +195,12 @@ export default function SignupPage() {
         style={{
           marginTop: '32px',
           fontSize: '12px',
-          color: '#555',
+          color: '#888',
           textAlign: 'center',
         }}
       >
         Already have an account?{' '}
-        <Link href="/login" style={{ color: '#888' }}>
+        <Link href="/login" style={{ color: '#cccccc' }}>
           Log in
         </Link>
       </p>

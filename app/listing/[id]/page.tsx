@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import CountdownTimer from '@/components/CountdownTimer'
 import CheckoutButton from './CheckoutButton'
+import { PRICING_TABLE } from '@/lib/pricing'
 import type { Listing } from '@/lib/types'
 
 interface Props {
@@ -45,9 +46,9 @@ export default async function ListingPage({ params }: Props) {
 
   const label = {
     fontSize: '10px',
-    letterSpacing: '0.16em',
+    letterSpacing: '0.18em',
     textTransform: 'uppercase' as const,
-    color: '#555',
+    color: '#888',
     marginBottom: '6px',
     display: 'block',
   }
@@ -59,9 +60,9 @@ export default async function ListingPage({ params }: Props) {
         href="/browse"
         style={{
           fontSize: '10px',
-          letterSpacing: '0.16em',
+          letterSpacing: '0.18em',
           textTransform: 'uppercase',
-          color: '#555',
+          color: '#888',
           display: 'inline-block',
           marginBottom: '40px',
         }}
@@ -109,7 +110,7 @@ export default async function ListingPage({ params }: Props) {
                   justifyContent: 'center',
                   color: '#333',
                   fontSize: '10px',
-                  letterSpacing: '0.16em',
+                  letterSpacing: '0.18em',
                 }}
               >
                 NO PHOTO
@@ -129,7 +130,7 @@ export default async function ListingPage({ params }: Props) {
               >
                 <span
                   style={{
-                    color: '#e8e0d8',
+                    color: '#ffffff',
                     fontSize: '12px',
                     letterSpacing: '0.3em',
                     textTransform: 'uppercase',
@@ -154,7 +155,7 @@ export default async function ListingPage({ params }: Props) {
                 marginBottom: '24px',
               }}
             >
-              <p style={{ fontSize: '12px', color: '#555', letterSpacing: '0.08em' }}>
+              <p style={{ fontSize: '12px', color: '#888', letterSpacing: '0.08em' }}>
                 This bouquet has been sold
               </p>
             </div>
@@ -169,7 +170,7 @@ export default async function ListingPage({ params }: Props) {
                 marginBottom: '24px',
               }}
             >
-              <p style={{ fontSize: '12px', color: '#555', letterSpacing: '0.08em' }}>
+              <p style={{ fontSize: '12px', color: '#888', letterSpacing: '0.08em' }}>
                 This listing has ended
               </p>
             </div>
@@ -183,14 +184,14 @@ export default async function ListingPage({ params }: Props) {
                 fontFamily: "'Cormorant Garamond', Georgia, serif",
                 fontSize: '36px',
                 fontWeight: 300,
-                color: '#e8e0d8',
+                color: '#ffffff',
                 lineHeight: 1.2,
                 marginBottom: '4px',
               }}
             >
               {listing.brand}
             </h1>
-            <p style={{ fontSize: '12px', color: '#555', letterSpacing: '0.06em' }}>
+            <p style={{ fontSize: '12px', color: '#888', letterSpacing: '0.06em' }}>
               {listing.area}
             </p>
           </div>
@@ -201,22 +202,41 @@ export default async function ListingPage({ params }: Props) {
           {listing.description && (
             <div style={{ marginBottom: '24px' }}>
               <span style={label}>Description</span>
-              <p style={{ fontSize: '13px', color: '#888', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '13px', color: '#cccccc', lineHeight: 1.6 }}>
                 {listing.description}
               </p>
             </div>
           )}
 
-          {/* AI price */}
+          {/* AI price with retail comparison */}
           {listing.ai_price && (
             <div style={{ marginBottom: '24px' }}>
+              {/* Crossed-out retail reference */}
+              {listing.brand && listing.size && PRICING_TABLE[listing.brand]?.[listing.size] && (
+                <div style={{ marginBottom: '10px' }}>
+                  <span style={label}>{listing.brand} Retail</span>
+                  <p
+                    style={{
+                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontSize: '26px',
+                      fontWeight: 300,
+                      color: '#555',
+                      textDecoration: 'line-through',
+                      lineHeight: 1,
+                    }}
+                  >
+                    AED {PRICING_TABLE[listing.brand][listing.size]}
+                  </p>
+                </div>
+              )}
+
               <span style={label}>Resale Price</span>
               <p
                 style={{
                   fontFamily: "'Cormorant Garamond', Georgia, serif",
                   fontSize: '52px',
                   fontWeight: 300,
-                  color: '#e8e0d8',
+                  color: '#ffffff',
                   lineHeight: 1,
                 }}
               >
@@ -259,10 +279,10 @@ export default async function ListingPage({ params }: Props) {
                       alignItems: 'center',
                     }}
                   >
-                    <span style={{ fontSize: '12px', color: '#555', letterSpacing: '0.04em' }}>
+                    <span style={{ fontSize: '12px', color: '#888', letterSpacing: '0.04em' }}>
                       {lbl}
                     </span>
-                    <span style={{ fontSize: '13px', color: '#888' }}>AED {amount}</span>
+                    <span style={{ fontSize: '13px', color: '#cccccc' }}>AED {amount}</span>
                   </div>
                 ))}
                 <hr style={{ border: 'none', borderTop: '1px solid #1a1a1a', margin: '4px 0' }} />
@@ -270,9 +290,9 @@ export default async function ListingPage({ params }: Props) {
                   <span
                     style={{
                       fontSize: '10px',
-                      letterSpacing: '0.16em',
+                      letterSpacing: '0.18em',
                       textTransform: 'uppercase',
-                      color: '#e8e0d8',
+                      color: '#ffffff',
                     }}
                   >
                     Total
@@ -282,7 +302,7 @@ export default async function ListingPage({ params }: Props) {
                       fontFamily: "'Cormorant Garamond', Georgia, serif",
                       fontSize: '22px',
                       fontWeight: 300,
-                      color: '#e8e0d8',
+                      color: '#ffffff',
                     }}
                   >
                     AED {total}
@@ -306,7 +326,7 @@ export default async function ListingPage({ params }: Props) {
                   background: '#f0ebe4',
                   color: '#0d0d0d',
                   fontSize: '10px',
-                  letterSpacing: '0.16em',
+                  letterSpacing: '0.18em',
                   textTransform: 'uppercase',
                   padding: '16px 24px',
                   borderRadius: '2px',
@@ -320,7 +340,7 @@ export default async function ListingPage({ params }: Props) {
               <p
                 style={{
                   fontSize: '11px',
-                  color: '#555',
+                  color: '#888',
                   lineHeight: 1.7,
                   letterSpacing: '0.02em',
                   textAlign: 'center',
@@ -331,7 +351,7 @@ export default async function ListingPage({ params }: Props) {
                   href="https://wa.me/97150798209"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: '#888', textDecoration: 'underline' }}
+                  style={{ color: '#cccccc', textDecoration: 'underline' }}
                 >
                   +971 50 798 209
                 </a>{' '}

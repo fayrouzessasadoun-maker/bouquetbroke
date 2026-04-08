@@ -132,16 +132,16 @@ export default function AdminPricePage() {
 
   const labelStyle = {
     fontSize: '10px',
-    letterSpacing: '0.16em',
+    letterSpacing: '0.18em',
     textTransform: 'uppercase' as const,
-    color: '#555',
+    color: '#888',
     display: 'block',
     marginBottom: '6px',
   }
 
   const valueStyle = {
     fontSize: '13px',
-    color: '#e8e0d8',
+    color: '#ffffff',
     lineHeight: 1.5,
   }
 
@@ -153,7 +153,7 @@ export default function AdminPricePage() {
             fontFamily: "'Cormorant Garamond', Georgia, serif",
             fontSize: '36px',
             fontWeight: 300,
-            color: '#e8e0d8',
+            color: '#ffffff',
             marginBottom: '32px',
           }}
         >
@@ -169,7 +169,7 @@ export default function AdminPricePage() {
               background: '#0d0d0d',
               border: '1px solid #222',
               borderRadius: '2px',
-              color: '#e8e0d8',
+              color: '#ffffff',
               fontSize: '13px',
               padding: '14px',
               width: '100%',
@@ -182,7 +182,7 @@ export default function AdminPricePage() {
               background: '#f0ebe4',
               color: '#0d0d0d',
               fontSize: '10px',
-              letterSpacing: '0.16em',
+              letterSpacing: '0.18em',
               textTransform: 'uppercase',
               padding: '14px',
               borderRadius: '2px',
@@ -205,13 +205,13 @@ export default function AdminPricePage() {
             fontFamily: "'Cormorant Garamond', Georgia, serif",
             fontSize: '40px',
             fontWeight: 300,
-            color: '#e8e0d8',
+            color: '#ffffff',
             marginBottom: '16px',
           }}
         >
           Published.
         </h1>
-        <p style={{ fontSize: '13px', color: '#888', marginBottom: '32px' }}>
+        <p style={{ fontSize: '13px', color: '#cccccc', marginBottom: '32px' }}>
           The listing is now live at AED {finalPrice} and expires in 24 hours.
         </p>
         <Link
@@ -220,7 +220,7 @@ export default function AdminPricePage() {
             background: '#f0ebe4',
             color: '#0d0d0d',
             fontSize: '10px',
-            letterSpacing: '0.16em',
+            letterSpacing: '0.18em',
             textTransform: 'uppercase',
             padding: '14px 28px',
             borderRadius: '2px',
@@ -236,7 +236,7 @@ export default function AdminPricePage() {
   if (loadingListing) {
     return (
       <div style={{ padding: '120px 24px', textAlign: 'center' }}>
-        <p style={{ fontSize: '10px', letterSpacing: '0.16em', color: '#444' }}>Loading listing...</p>
+        <p style={{ fontSize: '10px', letterSpacing: '0.18em', color: '#444' }}>Loading listing...</p>
       </div>
     )
   }
@@ -244,7 +244,7 @@ export default function AdminPricePage() {
   if (!listing) {
     return (
       <div style={{ padding: '120px 24px', textAlign: 'center' }}>
-        <p style={{ fontSize: '13px', color: '#555' }}>Listing not found.</p>
+        <p style={{ fontSize: '13px', color: '#888' }}>Listing not found.</p>
       </div>
     )
   }
@@ -257,9 +257,9 @@ export default function AdminPricePage() {
         href="/admin/listings"
         style={{
           fontSize: '10px',
-          letterSpacing: '0.16em',
+          letterSpacing: '0.18em',
           textTransform: 'uppercase',
-          color: '#555',
+          color: '#888',
           display: 'inline-block',
           marginBottom: '40px',
         }}
@@ -272,7 +272,7 @@ export default function AdminPricePage() {
           fontSize: '9px',
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
-          color: '#555',
+          color: '#888',
           marginBottom: '8px',
         }}
       >
@@ -283,7 +283,7 @@ export default function AdminPricePage() {
           fontFamily: "'Cormorant Garamond', Georgia, serif",
           fontSize: '36px',
           fontWeight: 300,
-          color: '#e8e0d8',
+          color: '#ffffff',
           marginBottom: '48px',
         }}
       >
@@ -403,7 +403,7 @@ export default function AdminPricePage() {
                         fontSize: '10px',
                         letterSpacing: '0.12em',
                         textTransform: 'uppercase',
-                        color: s === listing.size ? '#e8e0d8' : '#555',
+                        color: s === listing.size ? '#ffffff' : '#888',
                       }}
                     >
                       {s}
@@ -413,7 +413,7 @@ export default function AdminPricePage() {
                         fontFamily: "'Cormorant Garamond', Georgia, serif",
                         fontSize: '18px',
                         fontWeight: 300,
-                        color: s === listing.size ? '#e8e0d8' : '#555',
+                        color: s === listing.size ? '#ffffff' : '#888',
                       }}
                     >
                       AED {brandPricing[s]}
@@ -443,9 +443,9 @@ export default function AdminPricePage() {
                 background: aiLoading ? '#222' : '#1a1a1a',
                 border: '1px solid #333',
                 borderRadius: '2px',
-                color: aiLoading ? '#555' : '#e8e0d8',
+                color: aiLoading ? '#888' : '#ffffff',
                 fontSize: '10px',
-                letterSpacing: '0.16em',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 padding: '14px',
                 cursor: aiLoading ? 'not-allowed' : 'pointer',
@@ -474,7 +474,7 @@ export default function AdminPricePage() {
                     border: '1px solid #222',
                   }}
                 >
-                  <span style={{ fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#555' }}>
+                  <span style={{ fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#888' }}>
                     Suggested Price
                   </span>
                   <span
@@ -482,7 +482,7 @@ export default function AdminPricePage() {
                       fontFamily: "'Cormorant Garamond', Georgia, serif",
                       fontSize: '28px',
                       fontWeight: 300,
-                      color: '#e8e0d8',
+                      color: '#ffffff',
                     }}
                   >
                     AED {aiResult.suggestedPrice}
@@ -498,13 +498,13 @@ export default function AdminPricePage() {
                 ].map(({ label, value }) => (
                   <div key={label}>
                     <span style={labelStyle}>{label}</span>
-                    <p style={{ fontSize: '13px', color: '#888' }}>{value}</p>
+                    <p style={{ fontSize: '13px', color: '#cccccc' }}>{value}</p>
                   </div>
                 ))}
 
                 <div>
                   <span style={labelStyle}>Reasoning</span>
-                  <p style={{ fontSize: '12px', color: '#555', lineHeight: 1.6 }}>
+                  <p style={{ fontSize: '12px', color: '#888', lineHeight: 1.6 }}>
                     {aiResult.reasoning}
                   </p>
                 </div>
@@ -527,7 +527,7 @@ export default function AdminPricePage() {
               <span
                 style={{
                   fontSize: '13px',
-                  color: '#555',
+                  color: '#888',
                   whiteSpace: 'nowrap',
                 }}
               >
@@ -542,7 +542,7 @@ export default function AdminPricePage() {
                   background: '#0d0d0d',
                   border: '1px solid #333',
                   borderRadius: '2px',
-                  color: '#e8e0d8',
+                  color: '#ffffff',
                   fontSize: '22px',
                   fontFamily: "'Cormorant Garamond', Georgia, serif",
                   fontWeight: 300,
@@ -563,10 +563,10 @@ export default function AdminPricePage() {
               disabled={approving || !finalPrice}
               style={{
                 width: '100%',
-                background: approving || !finalPrice ? '#888' : '#f0ebe4',
+                background: approving || !finalPrice ? '#cccccc' : '#f0ebe4',
                 color: '#0d0d0d',
                 fontSize: '10px',
-                letterSpacing: '0.16em',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 padding: '16px',
                 borderRadius: '2px',

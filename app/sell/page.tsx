@@ -9,23 +9,27 @@ import { BRANDS, DUBAI_AREAS, SIZES, SIZE_DESCRIPTIONS } from '@/lib/pricing'
 import type { User } from '@supabase/supabase-js'
 
 const STEPS = [
-  { n: 1, label: 'Photo' },
+  { n: 1, label: 'Photos' },
   { n: 2, label: 'Brand' },
   { n: 3, label: 'Size' },
   { n: 4, label: 'Location' },
   { n: 5, label: 'Details' },
 ]
 
+const MIN_PHOTOS = 2
+const MAX_PHOTOS = 4
+
 export default function SellPage() {
   const router = useRouter()
   const [user, setUser] = useState<User | null>(null)
   const [authLoading, setAuthLoading] = useState(true)
   const fileRef = useRef<HTMLInputElement>(null)
+  const [isMobile, setIsMobile] = useState<boolean | null>(null)
 
   // Form state
   const [step, setStep] = useState(1)
-  const [photo, setPhoto] = useState<File | null>(null)
-  const [photoPreview, setPhotoPreview] = useState<string | null>(null)
+  const [photos, setPhotos] = useState<File[]>([])
+  const [photoPreviews, setPhotoPreviews] = useState<string[]>([])
   const [brand, setBrand] = useState('')
   const [size, setSize] = useState('')
   const [area, setArea] = useState('')
@@ -45,18 +49,29 @@ export default function SellPage() {
         router.replace('/login?redirect=/sell')
       }
     })
+    // Detect mobile
+    setIsMobile(/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent))
   }, [router])
 
-  const handlePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePhotoCapture = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
-    setPhoto(file)
+    if (photos.length >= MAX_PHOTOS) return
+
     const url = URL.createObjectURL(file)
-    setPhotoPreview(url)
+    setPhotos((prev) => [...prev, file])
+    setPhotoPreviews((prev) => [...prev, url])
+    // Reset so same photo can be re-taken if needed
+    e.target.value = ''
+  }
+
+  const removePhoto = (index: number) => {
+    setPhotos((prev) => prev.filter((_, i) => i !== index))
+    setPhotoPreviews((prev) => prev.filter((_, i) => i !== index))
   }
 
   const handleSubmit = async () => {
-    if (!user || !photo || !brand || !size || !area) {
+    if (!user || photos.length < MIN_PHOTOS || !brand || !size || !area) {
       setError('Please complete all required fields.')
       return
     }
@@ -65,24 +80,32 @@ export default function SellPage() {
     setError('')
 
     try {
-      // Upload photo
-      const ext = photo.name.split('.').pop()
-      const fileName = `${user.id}_${Date.now()}.${ext}`
+      // Upload all photos
+      const uploadedUrls: string[] = []
 
-      const { data: uploadData, error: uploadError } = await supabase.storage
-        .from('bouquets')
-        .upload(fileName, photo, { contentType: photo.type })
+      for (let i = 0; i < photos.length; i++) {
+        const photo = photos[i]
+        const ext = photo.name.split('.').pop() || 'jpg'
+        const fileName = `${user.id}_${Date.now()}_${i}.${ext}`
 
-      if (uploadError) {
-        setError('Photo upload failed. Please try again.')
-        return
+        const { data: uploadData, error: uploadError } = await supabase.storage
+          .from('bouquets')
+          .upload(fileName, photo, { contentType: photo.type })
+
+        if (uploadError) {
+          setError(`Photo ${i + 1} upload failed. Please try again.`)
+          setLoading(false)
+          return
+        }
+
+        const { data: { publicUrl } } = supabase.storage
+          .from('bouquets')
+          .getPublicUrl(uploadData.path)
+
+        uploadedUrls.push(publicUrl)
       }
 
-      const {
-        data: { publicUrl },
-      } = supabase.storage.from('bouquets').getPublicUrl(uploadData.path)
-
-      // Insert listing
+      // Insert listing — first photo in photo_url for backwards compat, all in photo_urls
       const { error: insertError } = await supabase.from('listings').insert({
         user_id: user.id,
         brand,
@@ -90,7 +113,8 @@ export default function SellPage() {
         area,
         description: description.trim() || null,
         whatsapp: whatsapp.trim() || null,
-        photo_url: publicUrl,
+        photo_url: uploadedUrls[0],
+        photo_urls: uploadedUrls,
         is_approved: false,
         is_sold: false,
       })
@@ -140,34 +164,11 @@ export default function SellPage() {
 
   if (submitted) {
     return (
-      <div
-        style={{
-          maxWidth: '560px',
-          margin: '0 auto',
-          padding: '120px 24px',
-          textAlign: 'center',
-        }}
-      >
-        <p
-          style={{
-            fontSize: '9px',
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: '#c0392b',
-            marginBottom: '20px',
-          }}
-        >
+      <div style={{ maxWidth: '560px', margin: '0 auto', padding: '120px 24px', textAlign: 'center' }}>
+        <p style={{ fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#c0392b', marginBottom: '20px' }}>
           Submitted
         </p>
-        <h1
-          style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontSize: '36px',
-            fontWeight: 300,
-            color: '#ffffff',
-            marginBottom: '20px',
-          }}
-        >
+        <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: '36px', fontWeight: 300, color: '#ffffff', marginBottom: '20px' }}>
           We&apos;ve got it.
         </h1>
         <p style={{ fontSize: '13px', color: '#cccccc', lineHeight: 1.7, marginBottom: '32px' }}>
@@ -175,17 +176,7 @@ export default function SellPage() {
         </p>
         <button
           onClick={() => router.push('/browse')}
-          style={{
-            background: '#f0ebe4',
-            color: '#0d0d0d',
-            fontSize: '10px',
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            padding: '14px 28px',
-            borderRadius: '2px',
-            border: 'none',
-            cursor: 'pointer',
-          }}
+          style={{ background: '#f0ebe4', color: '#0d0d0d', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px 28px', borderRadius: '2px', border: 'none', cursor: 'pointer' }}
         >
           Browse Listings
         </button>
@@ -196,231 +187,143 @@ export default function SellPage() {
   return (
     <div style={{ maxWidth: '560px', margin: '0 auto', padding: '60px 24px' }}>
       {/* Header */}
-      <p
-        style={{
-          fontSize: '9px',
-          letterSpacing: '0.2em',
-          textTransform: 'uppercase',
-          color: '#888',
-          marginBottom: '12px',
-        }}
-      >
+      <p style={{ fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#888', marginBottom: '12px' }}>
         Sell Your Bouquet
       </p>
-      <h1
-        style={{
-          fontFamily: "'Cormorant Garamond', Georgia, serif",
-          fontSize: '40px',
-          fontWeight: 300,
-          color: '#ffffff',
-          marginBottom: '8px',
-        }}
-      >
+      <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: '40px', fontWeight: 300, color: '#ffffff', marginBottom: '8px' }}>
         List for Resale
       </h1>
       <p style={{ fontSize: '13px', color: '#cccccc', marginBottom: '48px' }}>
         We price it. You get paid.
       </p>
 
-      {/* Step indicators */}
-      <div
-        style={{
-          display: 'flex',
-          gap: '6px',
-          marginBottom: '48px',
-        }}
-      >
+      {/* Step progress */}
+      <div style={{ display: 'flex', gap: '6px', marginBottom: '48px' }}>
         {STEPS.map((s) => (
           <div
             key={s.n}
-            style={{
-              flex: 1,
-              height: '2px',
-              background: step >= s.n ? '#ffffff' : '#222',
-              transition: 'background 0.2s ease',
-            }}
+            style={{ flex: 1, height: '2px', background: step >= s.n ? '#ffffff' : '#222', transition: 'background 0.2s ease' }}
           />
         ))}
       </div>
 
-      {/* Step label */}
-      <p
-        style={{
-          fontSize: '9px',
-          letterSpacing: '0.2em',
-          textTransform: 'uppercase',
-          color: '#888',
-          marginBottom: '32px',
-        }}
-      >
+      <p style={{ fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#888', marginBottom: '32px' }}>
         Step {step} of {STEPS.length} — {STEPS[step - 1].label}
       </p>
 
-      {/* Step 1: Photo */}
+      {/* ── Step 1: Photos ── */}
       {step === 1 && (
         <div>
+          {/* Hidden camera input */}
           <input
             ref={fileRef}
             type="file"
             accept="image/*"
-            onChange={handlePhoto}
+            capture="environment"
+            onChange={handlePhotoCapture}
             style={{ display: 'none' }}
           />
 
-          {photoPreview ? (
-            <div style={{ marginBottom: '24px' }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={photoPreview}
-                alt="Preview"
-                style={{
-                  width: '100%',
-                  aspectRatio: '4/3',
-                  objectFit: 'cover',
-                  borderRadius: '2px',
-                  border: '1px solid #222',
-                  display: 'block',
-                  marginBottom: '12px',
-                }}
-              />
-              <button
-                onClick={() => fileRef.current?.click()}
-                style={{
-                  background: 'transparent',
-                  border: '1px solid #333',
-                  borderRadius: '2px',
-                  color: '#cccccc',
-                  fontSize: '10px',
-                  letterSpacing: '0.12em',
-                  padding: '10px 16px',
-                  cursor: 'pointer',
-                }}
-              >
-                Change Photo
-              </button>
+          {/* Desktop warning */}
+          {isMobile === false && (
+            <div style={{ padding: '16px', border: '1px solid #333', borderRadius: '2px', marginBottom: '24px', background: '#111' }}>
+              <p style={{ fontSize: '12px', color: '#cccccc', lineHeight: 1.7 }}>
+                📱 Please use a mobile device to take live photos of your bouquet. Camera roll uploads are not accepted.
+              </p>
             </div>
-          ) : (
+          )}
+
+          {/* Instruction note */}
+          <p style={{ fontSize: '11px', color: '#888', lineHeight: 1.7, marginBottom: '20px', letterSpacing: '0.02em' }}>
+            Take live photos of your bouquet right now. Camera roll uploads are not accepted to ensure bouquet freshness.
+          </p>
+
+          {/* Photo counter */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+            <span style={{ fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: photos.length >= MIN_PHOTOS ? '#cccccc' : '#888' }}>
+              {photos.length}/{MIN_PHOTOS} photos required
+              {photos.length >= MIN_PHOTOS && photos.length < MAX_PHOTOS && ` · ${photos.length}/${MAX_PHOTOS} taken`}
+              {photos.length === MAX_PHOTOS && ` · Maximum reached`}
+            </span>
+          </div>
+
+          {/* Photo thumbnails grid */}
+          {photoPreviews.length > 0 && (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px', marginBottom: '16px' }}>
+              {photoPreviews.map((src, i) => (
+                <div key={i} style={{ position: 'relative' }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt={`Photo ${i + 1}`}
+                    style={{ width: '100%', aspectRatio: '1', objectFit: 'cover', borderRadius: '2px', border: '1px solid #222', display: 'block' }}
+                  />
+                  <button
+                    onClick={() => removePhoto(i)}
+                    style={{ position: 'absolute', top: '6px', right: '6px', background: 'rgba(13,13,13,0.85)', border: 'none', borderRadius: '2px', color: '#cccccc', fontSize: '11px', width: '24px', height: '24px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    aria-label="Remove photo"
+                  >
+                    ✕
+                  </button>
+                  <span style={{ position: 'absolute', bottom: '6px', left: '6px', background: 'rgba(13,13,13,0.85)', fontSize: '9px', letterSpacing: '0.12em', color: '#888', padding: '2px 6px' }}>
+                    {i + 1}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Add photo button — only show if under max */}
+          {photos.length < MAX_PHOTOS && (
             <button
               onClick={() => fileRef.current?.click()}
-              style={{
-                width: '100%',
-                aspectRatio: '4/3',
-                background: '#111',
-                border: '1px dashed #333',
-                borderRadius: '2px',
-                cursor: 'pointer',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '12px',
-                marginBottom: '24px',
-              }}
+              style={{ width: '100%', padding: '20px', background: '#111', border: '1px dashed #333', borderRadius: '2px', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', marginBottom: '20px' }}
             >
-              <span style={{ fontSize: '24px', color: '#333' }}>+</span>
-              <span
-                style={{
-                  fontSize: '10px',
-                  letterSpacing: '0.18em',
-                  textTransform: 'uppercase',
-                  color: '#444',
-                }}
-              >
-                Upload Photo
-              </span>
-              <span style={{ fontSize: '11px', color: '#333' }}>
-                JPG, PNG or WEBP · Max 10MB
+              <span style={{ fontSize: '22px', color: '#444' }}>+</span>
+              <span style={{ fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#444' }}>
+                {photos.length === 0 ? 'Take First Photo' : `Add Another Photo (${photos.length}/${MAX_PHOTOS})`}
               </span>
             </button>
           )}
 
           <button
             onClick={() => {
-              if (!photo) {
-                setError('Please upload a photo of your bouquet.')
+              if (photos.length < MIN_PHOTOS) {
+                setError(`Please take at least ${MIN_PHOTOS} photos of your bouquet.`)
                 return
               }
               setError('')
               setStep(2)
             }}
-            style={{
-              width: '100%',
-              background: '#f0ebe4',
-              color: '#0d0d0d',
-              fontSize: '10px',
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              padding: '14px',
-              borderRadius: '2px',
-              border: 'none',
-              cursor: 'pointer',
-            }}
+            style={{ width: '100%', background: photos.length >= MIN_PHOTOS ? '#f0ebe4' : '#222', color: photos.length >= MIN_PHOTOS ? '#0d0d0d' : '#555', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: photos.length >= MIN_PHOTOS ? 'pointer' : 'not-allowed' }}
           >
             Continue
           </button>
         </div>
       )}
 
-      {/* Step 2: Brand */}
+      {/* ── Step 2: Brand ── */}
       {step === 2 && (
         <div>
           <label style={labelStyle}>Select Brand</label>
-          <select
-            value={brand}
-            onChange={(e) => setBrand(e.target.value)}
-            style={{ ...inputStyle, marginBottom: '24px' }}
-          >
+          <select value={brand} onChange={(e) => setBrand(e.target.value)} style={{ ...inputStyle, marginBottom: '24px' }}>
             <option value="">— Choose brand</option>
             {BRANDS.map((b) => (
-              <option key={b} value={b}>
-                {b}
-              </option>
+              <option key={b} value={b}>{b}</option>
             ))}
           </select>
-
           <div style={{ display: 'flex', gap: '12px' }}>
-            <button
-              onClick={() => setStep(1)}
-              style={{
-                flex: 1,
-                background: 'transparent',
-                border: '1px solid #333',
-                borderRadius: '2px',
-                color: '#cccccc',
-                fontSize: '10px',
-                letterSpacing: '0.12em',
-                padding: '14px',
-                cursor: 'pointer',
-              }}
-            >
+            <button onClick={() => setStep(1)} style={{ flex: 1, background: 'transparent', border: '1px solid #333', borderRadius: '2px', color: '#cccccc', fontSize: '10px', letterSpacing: '0.12em', padding: '14px', cursor: 'pointer' }}>
               Back
             </button>
-            <button
-              onClick={() => {
-                if (!brand) { setError('Please select a brand.'); return }
-                setError('')
-                setStep(3)
-              }}
-              style={{
-                flex: 2,
-                background: '#f0ebe4',
-                color: '#0d0d0d',
-                fontSize: '10px',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                padding: '14px',
-                borderRadius: '2px',
-                border: 'none',
-                cursor: 'pointer',
-              }}
-            >
+            <button onClick={() => { if (!brand) { setError('Please select a brand.'); return } setError(''); setStep(3) }} style={{ flex: 2, background: '#f0ebe4', color: '#0d0d0d', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: 'pointer' }}>
               Continue
             </button>
           </div>
         </div>
       )}
 
-      {/* Step 3: Size */}
+      {/* ── Step 3: Size ── */}
       {step === 3 && (
         <div>
           <label style={labelStyle}>Select Size</label>
@@ -429,24 +332,9 @@ export default function SellPage() {
               <button
                 key={s}
                 onClick={() => setSize(s)}
-                style={{
-                  background: size === s ? '#1a1a1a' : '#111',
-                  border: `1px solid ${size === s ? '#444' : '#222'}`,
-                  borderRadius: '2px',
-                  padding: '16px',
-                  cursor: 'pointer',
-                  textAlign: 'left',
-                }}
+                style={{ background: size === s ? '#1a1a1a' : '#111', border: `1px solid ${size === s ? '#444' : '#222'}`, borderRadius: '2px', padding: '16px', cursor: 'pointer', textAlign: 'left' }}
               >
-                <p
-                  style={{
-                    fontSize: '10px',
-                    letterSpacing: '0.18em',
-                    textTransform: 'uppercase',
-                    color: size === s ? '#ffffff' : '#cccccc',
-                    marginBottom: '4px',
-                  }}
-                >
+                <p style={{ fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: size === s ? '#ffffff' : '#cccccc', marginBottom: '4px' }}>
                   {s}
                 </p>
                 <p style={{ fontSize: '12px', color: '#888' }}>
@@ -455,109 +343,39 @@ export default function SellPage() {
               </button>
             ))}
           </div>
-
           <div style={{ display: 'flex', gap: '12px' }}>
-            <button
-              onClick={() => setStep(2)}
-              style={{
-                flex: 1,
-                background: 'transparent',
-                border: '1px solid #333',
-                borderRadius: '2px',
-                color: '#cccccc',
-                fontSize: '10px',
-                letterSpacing: '0.12em',
-                padding: '14px',
-                cursor: 'pointer',
-              }}
-            >
+            <button onClick={() => setStep(2)} style={{ flex: 1, background: 'transparent', border: '1px solid #333', borderRadius: '2px', color: '#cccccc', fontSize: '10px', letterSpacing: '0.12em', padding: '14px', cursor: 'pointer' }}>
               Back
             </button>
-            <button
-              onClick={() => {
-                if (!size) { setError('Please select a size.'); return }
-                setError('')
-                setStep(4)
-              }}
-              style={{
-                flex: 2,
-                background: '#f0ebe4',
-                color: '#0d0d0d',
-                fontSize: '10px',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                padding: '14px',
-                borderRadius: '2px',
-                border: 'none',
-                cursor: 'pointer',
-              }}
-            >
+            <button onClick={() => { if (!size) { setError('Please select a size.'); return } setError(''); setStep(4) }} style={{ flex: 2, background: '#f0ebe4', color: '#0d0d0d', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: 'pointer' }}>
               Continue
             </button>
           </div>
         </div>
       )}
 
-      {/* Step 4: Location */}
+      {/* ── Step 4: Location ── */}
       {step === 4 && (
         <div>
           <label style={labelStyle}>Dubai Area</label>
-          <select
-            value={area}
-            onChange={(e) => setArea(e.target.value)}
-            style={{ ...inputStyle, marginBottom: '24px' }}
-          >
+          <select value={area} onChange={(e) => setArea(e.target.value)} style={{ ...inputStyle, marginBottom: '24px' }}>
             <option value="">— Choose area</option>
             {DUBAI_AREAS.map((a) => (
-              <option key={a} value={a}>
-                {a}
-              </option>
+              <option key={a} value={a}>{a}</option>
             ))}
           </select>
-
           <div style={{ display: 'flex', gap: '12px' }}>
-            <button
-              onClick={() => setStep(3)}
-              style={{
-                flex: 1,
-                background: 'transparent',
-                border: '1px solid #333',
-                borderRadius: '2px',
-                color: '#cccccc',
-                fontSize: '10px',
-                letterSpacing: '0.12em',
-                padding: '14px',
-                cursor: 'pointer',
-              }}
-            >
+            <button onClick={() => setStep(3)} style={{ flex: 1, background: 'transparent', border: '1px solid #333', borderRadius: '2px', color: '#cccccc', fontSize: '10px', letterSpacing: '0.12em', padding: '14px', cursor: 'pointer' }}>
               Back
             </button>
-            <button
-              onClick={() => {
-                if (!area) { setError('Please select an area.'); return }
-                setError('')
-                setStep(5)
-              }}
-              style={{
-                flex: 2,
-                background: '#f0ebe4',
-                color: '#0d0d0d',
-                fontSize: '10px',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                padding: '14px',
-                borderRadius: '2px',
-                border: 'none',
-                cursor: 'pointer',
-              }}
-            >
+            <button onClick={() => { if (!area) { setError('Please select an area.'); return } setError(''); setStep(5) }} style={{ flex: 2, background: '#f0ebe4', color: '#0d0d0d', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: 'pointer' }}>
               Continue
             </button>
           </div>
         </div>
       )}
 
-      {/* Step 5: Details + submit */}
+      {/* ── Step 5: Details + submit ── */}
       {step === 5 && (
         <div>
           <div style={{ marginBottom: '20px' }}>
@@ -589,50 +407,19 @@ export default function SellPage() {
           </div>
 
           {error && (
-            <p
-              style={{
-                fontSize: '12px',
-                color: '#c0392b',
-                marginBottom: '16px',
-                letterSpacing: '0.04em',
-              }}
-            >
+            <p style={{ fontSize: '12px', color: '#c0392b', marginBottom: '16px', letterSpacing: '0.04em' }}>
               {error}
             </p>
           )}
 
           <div style={{ display: 'flex', gap: '12px' }}>
-            <button
-              onClick={() => setStep(4)}
-              style={{
-                flex: 1,
-                background: 'transparent',
-                border: '1px solid #333',
-                borderRadius: '2px',
-                color: '#cccccc',
-                fontSize: '10px',
-                letterSpacing: '0.12em',
-                padding: '14px',
-                cursor: 'pointer',
-              }}
-            >
+            <button onClick={() => setStep(4)} style={{ flex: 1, background: 'transparent', border: '1px solid #333', borderRadius: '2px', color: '#cccccc', fontSize: '10px', letterSpacing: '0.12em', padding: '14px', cursor: 'pointer' }}>
               Back
             </button>
             <button
               onClick={handleSubmit}
               disabled={loading}
-              style={{
-                flex: 2,
-                background: loading ? '#cccccc' : '#f0ebe4',
-                color: '#0d0d0d',
-                fontSize: '10px',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                padding: '14px',
-                borderRadius: '2px',
-                border: 'none',
-                cursor: loading ? 'not-allowed' : 'pointer',
-              }}
+              style={{ flex: 2, background: loading ? '#888' : '#f0ebe4', color: '#0d0d0d', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: loading ? 'not-allowed' : 'pointer' }}
             >
               {loading ? 'Submitting...' : 'Submit Listing'}
             </button>
@@ -641,14 +428,7 @@ export default function SellPage() {
       )}
 
       {error && step < 5 && (
-        <p
-          style={{
-            fontSize: '12px',
-            color: '#c0392b',
-            marginTop: '16px',
-            letterSpacing: '0.04em',
-          }}
-        >
+        <p style={{ fontSize: '12px', color: '#c0392b', marginTop: '16px', letterSpacing: '0.04em' }}>
           {error}
         </p>
       )}

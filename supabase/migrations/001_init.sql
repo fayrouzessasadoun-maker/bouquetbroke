@@ -45,3 +45,4 @@ create policy "Service role can do everything"
   using (true);
 
 ALTER TABLE public.orders ADD COLUMN IF NOT EXISTS shipping_address text;
+ALTER TABLE public.listings ADD COLUMN IF NOT EXISTS photo_urls text[];

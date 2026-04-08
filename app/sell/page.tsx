@@ -75,6 +75,10 @@ export default function SellPage() {
       setError('Please complete all required fields.')
       return
     }
+    if (!whatsapp.trim()) {
+      setError('WhatsApp number is required for delivery coordination.')
+      return
+    }
 
     setLoading(true)
     setError('')
@@ -112,7 +116,7 @@ export default function SellPage() {
         size,
         area,
         description: description.trim() || null,
-        whatsapp: whatsapp.trim() || null,
+        whatsapp: whatsapp.trim(),
         photo_url: uploadedUrls[0],
         photo_urls: uploadedUrls,
         is_approved: false,
@@ -393,7 +397,7 @@ export default function SellPage() {
           </div>
 
           <div style={{ marginBottom: '24px' }}>
-            <label style={labelStyle}>WhatsApp Number <span style={{ color: '#444' }}>(optional)</span></label>
+            <label style={labelStyle}>WhatsApp Number</label>
             <input
               type="tel"
               value={whatsapp}
@@ -402,7 +406,7 @@ export default function SellPage() {
               style={inputStyle}
             />
             <p style={{ fontSize: '10px', color: '#444', marginTop: '6px' }}>
-              For delivery coordination only.
+              Required for delivery coordination.
             </p>
           </div>
 

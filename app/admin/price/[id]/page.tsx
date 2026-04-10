@@ -4,7 +4,6 @@ export const dynamic = 'force-dynamic'
 
 import { useState, useEffect, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import Image from 'next/image'
 import Link from 'next/link'
 import { PRICING_TABLE, SIZES } from '@/lib/pricing'
 import type { Listing, AiPriceResult } from '@/lib/types'
@@ -318,13 +317,11 @@ export default function AdminPricePage() {
             }}
           >
             {listing.photo_url ? (
-              <Image
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
                 src={listing.photo_url}
                 alt=""
-                fill
-                style={{ objectFit: 'cover' }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
             ) : (
               <div

@@ -4,7 +4,6 @@ export const dynamic = 'force-dynamic'
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import type { Listing } from '@/lib/types'
 
 export default function AdminListingsPage() {
@@ -226,15 +225,12 @@ export default function AdminListingsPage() {
                 >
                   <td style={{ padding: '12px 16px' }}>
                     {listing.photo_url ? (
-                      <div style={{ position: 'relative', width: '60px', height: '60px' }}>
-                        <Image
-                          src={listing.photo_url}
-                          alt=""
-                          fill
-                          style={{ objectFit: 'cover', borderRadius: '2px' }}
-                          sizes="60px"
-                        />
-                      </div>
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={listing.photo_url}
+                        alt=""
+                        style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '2px', display: 'block' }}
+                      />
                     ) : (
                       <div
                         style={{

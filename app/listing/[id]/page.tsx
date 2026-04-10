@@ -1,7 +1,6 @@
 export const dynamic = 'force-dynamic'
 
 import { createAdminClient } from '@/lib/supabaseAdmin'
-import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import CountdownTimer from '@/components/CountdownTimer'
@@ -92,13 +91,11 @@ export default async function ListingPage({ params }: Props) {
             }}
           >
             {listing.photo_url ? (
-              <Image
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
                 src={listing.photo_url}
                 alt={listing.brand || 'Bouquet'}
-                fill
-                style={{ objectFit: 'cover' }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
             ) : (
               <div

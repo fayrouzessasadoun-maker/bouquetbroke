@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import CountdownTimer from './CountdownTimer'
 import { PRICING_TABLE } from '@/lib/pricing'
 import type { Listing } from '@/lib/types'
@@ -29,12 +28,11 @@ export default function ListingCard({ listing }: Props) {
         {/* Photo */}
         <div className="relative" style={{ height: '200px' }}>
           {listing.photo_url ? (
-            <Image
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
               src={listing.photo_url}
               alt={listing.brand || 'Bouquet'}
-              fill
-              style={{ objectFit: 'cover' }}
-              sizes="(max-width: 768px) 100vw, 33vw"
+              style={{ width: '100%', height: '200px', objectFit: 'cover' }}
             />
           ) : (
             <div

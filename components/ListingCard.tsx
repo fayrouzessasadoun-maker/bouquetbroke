@@ -8,6 +8,7 @@ interface Props {
 }
 
 export default function ListingCard({ listing }: Props) {
+  console.log('ListingCard photo_url:', listing.photo_url)
   const isSold = listing.is_sold
   const isExpired = listing.expires_at
     ? new Date(listing.expires_at) < new Date()

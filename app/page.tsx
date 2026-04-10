@@ -6,20 +6,32 @@ import ListingCard from '@/components/ListingCard'
 import LiveTicker from '@/components/LiveTicker'
 import type { Listing } from '@/lib/types'
 
-async function getActiveListings(): Promise<Listing[]> {
+async function getListings(): Promise<Listing[]> {
   try {
     const supabase = createAdminClient()
-    const { data, error } = await supabase
-      .from('listings')
-      .select('*')
-      .eq('is_approved', true)
-      .eq('is_sold', false)
-      .gt('expires_at', new Date().toISOString())
-      .order('created_at', { ascending: false })
-      .limit(9)
+    const now = new Date().toISOString()
 
-    if (error) return []
-    return (data as Listing[]) || []
+    const [{ data: activeData }, { data: soldData }] = await Promise.all([
+      supabase
+        .from('listings')
+        .select('*')
+        .eq('is_approved', true)
+        .eq('is_sold', false)
+        .gt('expires_at', now)
+        .order('created_at', { ascending: false })
+        .limit(9),
+      supabase
+        .from('listings')
+        .select('*')
+        .eq('is_approved', true)
+        .eq('is_sold', true)
+        .order('created_at', { ascending: false })
+        .limit(3),
+    ])
+
+    const active = (activeData as Listing[]) || []
+    const sold = (soldData as Listing[]) || []
+    return [...active, ...sold]
   } catch {
     return []
   }
@@ -28,7 +40,7 @@ async function getActiveListings(): Promise<Listing[]> {
 export const revalidate = 60
 
 export default async function HomePage() {
-  const listings = await getActiveListings()
+  const listings = await getListings()
 
   return (
     <>

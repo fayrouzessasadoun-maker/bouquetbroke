@@ -20,19 +20,36 @@ export default function BrowsePage() {
 
   async function fetchListings() {
     setLoading(true)
-    let query = supabase
+    const now = new Date().toISOString()
+
+    let activeQuery = supabase
       .from('listings')
       .select('*')
       .eq('is_approved', true)
       .eq('is_sold', false)
-      .gt('expires_at', new Date().toISOString())
+      .gt('expires_at', now)
       .order('created_at', { ascending: false })
 
-    if (brand) query = query.eq('brand', brand)
-    if (area) query = query.eq('area', area)
+    let soldQuery = supabase
+      .from('listings')
+      .select('*')
+      .eq('is_approved', true)
+      .eq('is_sold', true)
+      .order('created_at', { ascending: false })
 
-    const { data } = await query
-    setListings((data as Listing[]) || [])
+    if (brand) {
+      activeQuery = activeQuery.eq('brand', brand)
+      soldQuery = soldQuery.eq('brand', brand)
+    }
+    if (area) {
+      activeQuery = activeQuery.eq('area', area)
+      soldQuery = soldQuery.eq('area', area)
+    }
+
+    const [{ data: activeData }, { data: soldData }] = await Promise.all([activeQuery, soldQuery])
+    const active = (activeData as Listing[]) || []
+    const sold = (soldData as Listing[]) || []
+    setListings([...active, ...sold])
     setLoading(false)
   }
 

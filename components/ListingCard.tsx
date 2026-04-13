@@ -150,7 +150,7 @@ export default function ListingCard({ listing }: Props) {
                     fontFamily: "'Cormorant Garamond', Georgia, serif",
                     fontSize: '13px',
                     fontWeight: 300,
-                    color: '#777777',
+                    color: '#555555',
                     textDecoration: 'line-through',
                     marginBottom: '2px',
                     lineHeight: 1,

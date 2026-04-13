@@ -216,7 +216,7 @@ export default async function ListingPage({ params }: Props) {
                       fontFamily: "'Cormorant Garamond', Georgia, serif",
                       fontSize: '26px',
                       fontWeight: 300,
-                      color: '#777777',
+                      color: '#555555',
                       textDecoration: 'line-through',
                       lineHeight: 1,
                     }}

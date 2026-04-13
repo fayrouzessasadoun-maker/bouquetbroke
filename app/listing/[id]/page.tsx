@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import CountdownTimer from '@/components/CountdownTimer'
 import CheckoutButton from './CheckoutButton'
-import { PRICING_TABLE } from '@/lib/pricing'
 import type { Listing } from '@/lib/types'
 
 interface Props {
@@ -208,10 +207,10 @@ export default async function ListingPage({ params }: Props) {
           {/* AI price with retail comparison */}
           {listing.ai_price && (
             <div style={{ marginBottom: '24px' }}>
-              {/* Crossed-out retail reference */}
-              {listing.brand && listing.size && PRICING_TABLE[listing.brand]?.[listing.size] && (
+              {/* Crossed-out retail price */}
+              {listing.retail_price && (
                 <div style={{ marginBottom: '10px' }}>
-                  <span style={label}>{listing.brand} Retail</span>
+                  <span style={label}>Original Retail Price</span>
                   <p
                     style={{
                       fontFamily: "'Cormorant Garamond', Georgia, serif",
@@ -222,7 +221,7 @@ export default async function ListingPage({ params }: Props) {
                       lineHeight: 1,
                     }}
                   >
-                    AED {PRICING_TABLE[listing.brand][listing.size]}
+                    AED {listing.retail_price}
                   </p>
                 </div>
               )}

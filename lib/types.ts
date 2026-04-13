@@ -18,6 +18,7 @@ export interface Listing {
   ai_packaging: string | null
   is_approved: boolean
   is_sold: boolean
+  retail_price: number | null
 }
 
 export interface Order {

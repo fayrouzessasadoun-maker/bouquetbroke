@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import CountdownTimer from './CountdownTimer'
-import { PRICING_TABLE } from '@/lib/pricing'
 import type { Listing } from '@/lib/types'
 
 interface Props {
@@ -144,9 +143,8 @@ export default function ListingCard({ listing }: Props) {
           {/* Price + Buy */}
           <div className="flex items-center justify-between">
             <div>
-              {/* Crossed-out retail reference price */}
-              {listing.ai_price && listing.brand && listing.size &&
-                PRICING_TABLE[listing.brand]?.[listing.size] && (
+              {/* Crossed-out retail price */}
+              {listing.retail_price && (
                 <p
                   style={{
                     fontFamily: "'Cormorant Garamond', Georgia, serif",
@@ -158,7 +156,7 @@ export default function ListingCard({ listing }: Props) {
                     lineHeight: 1,
                   }}
                 >
-                  AED {PRICING_TABLE[listing.brand][listing.size]}
+                  AED {listing.retail_price}
                 </p>
               )}
               <span

@@ -46,3 +46,5 @@ create policy "Service role can do everything"
 
 ALTER TABLE public.orders ADD COLUMN IF NOT EXISTS shipping_address text;
 ALTER TABLE public.listings ADD COLUMN IF NOT EXISTS photo_urls text[];
+ALTER TABLE public.listings ADD COLUMN IF NOT EXISTS retail_price numeric;
+UPDATE public.listings SET retail_price = 1075 WHERE brand = 'Florette';

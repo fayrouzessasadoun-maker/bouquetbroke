@@ -94,7 +94,7 @@ export default async function ListingPage({ params }: Props) {
               <img
                 src={listing.photo_url}
                 alt={listing.brand || 'Bouquet'}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
             ) : (
               <div

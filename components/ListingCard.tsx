@@ -32,7 +32,7 @@ export default function ListingCard({ listing }: Props) {
             <img
               src={listing.photo_url}
               alt={listing.brand || 'Bouquet'}
-              style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+              style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
             />
           ) : (
             <div

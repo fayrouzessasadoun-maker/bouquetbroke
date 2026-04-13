@@ -54,7 +54,7 @@ export default function BrowsePage() {
   }
 
   const selectStyle = {
-    background: '#0d0d0d',
+    background: '#1a1a1a',
     border: '1px solid #222',
     borderRadius: '2px' as const,
     color: '#cccccc',
@@ -75,7 +75,7 @@ export default function BrowsePage() {
             fontSize: '9px',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: '#888',
+            color: '#aaaaaa',
             marginBottom: '12px',
           }}
         >
@@ -141,7 +141,7 @@ export default function BrowsePage() {
               background: 'none',
               border: '1px solid #222',
               borderRadius: '2px',
-              color: '#888',
+              color: '#aaaaaa',
               fontSize: '10px',
               letterSpacing: '0.12em',
               padding: '10px 14px',
@@ -196,7 +196,7 @@ export default function BrowsePage() {
             fontFamily: "'Cormorant Garamond', Georgia, serif",
             fontSize: '22px',
             fontStyle: 'italic',
-            color: '#888',
+            color: '#aaaaaa',
             textAlign: 'center',
             padding: '80px 0',
           }}

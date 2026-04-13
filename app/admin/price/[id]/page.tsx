@@ -137,7 +137,7 @@ export default function AdminPricePage() {
     fontSize: '10px',
     letterSpacing: '0.18em',
     textTransform: 'uppercase' as const,
-    color: '#888',
+    color: '#aaaaaa',
     display: 'block',
     marginBottom: '6px',
   }
@@ -169,7 +169,7 @@ export default function AdminPricePage() {
             onChange={(e) => setPasswordInput(e.target.value)}
             placeholder="Admin password"
             style={{
-              background: '#0d0d0d',
+              background: '#1a1a1a',
               border: '1px solid #222',
               borderRadius: '2px',
               color: '#ffffff',
@@ -183,7 +183,7 @@ export default function AdminPricePage() {
             type="submit"
             style={{
               background: '#f0ebe4',
-              color: '#0d0d0d',
+              color: '#1a1a1a',
               fontSize: '10px',
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
@@ -221,7 +221,7 @@ export default function AdminPricePage() {
           href="/admin/listings"
           style={{
             background: '#f0ebe4',
-            color: '#0d0d0d',
+            color: '#1a1a1a',
             fontSize: '10px',
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
@@ -247,7 +247,7 @@ export default function AdminPricePage() {
   if (!listing) {
     return (
       <div style={{ padding: '120px 24px', textAlign: 'center' }}>
-        <p style={{ fontSize: '13px', color: '#888' }}>Listing not found.</p>
+        <p style={{ fontSize: '13px', color: '#aaaaaa' }}>Listing not found.</p>
       </div>
     )
   }
@@ -262,7 +262,7 @@ export default function AdminPricePage() {
           fontSize: '10px',
           letterSpacing: '0.18em',
           textTransform: 'uppercase',
-          color: '#888',
+          color: '#aaaaaa',
           display: 'inline-block',
           marginBottom: '40px',
         }}
@@ -275,7 +275,7 @@ export default function AdminPricePage() {
           fontSize: '9px',
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
-          color: '#888',
+          color: '#aaaaaa',
           marginBottom: '8px',
         }}
       >
@@ -309,7 +309,7 @@ export default function AdminPricePage() {
               position: 'relative',
               width: '100%',
               aspectRatio: '3/4',
-              background: '#111',
+              background: '#1e1e1e',
               border: '1px solid #222',
               borderRadius: '2px',
               overflow: 'hidden',
@@ -343,7 +343,7 @@ export default function AdminPricePage() {
           {/* Seller details */}
           <div
             style={{
-              background: '#111',
+              background: '#1e1e1e',
               border: '1px solid #222',
               borderRadius: '2px',
               padding: '20px',
@@ -377,7 +377,7 @@ export default function AdminPricePage() {
           {brandPricing && (
             <div
               style={{
-                background: '#111',
+                background: '#1e1e1e',
                 border: '1px solid #222',
                 borderRadius: '2px',
                 padding: '20px',
@@ -394,7 +394,7 @@ export default function AdminPricePage() {
                       display: 'flex',
                       justifyContent: 'space-between',
                       padding: '10px 12px',
-                      background: s === listing.size ? '#1a1a1a' : 'transparent',
+                      background: s === listing.size ? '#252525' : 'transparent',
                       border: s === listing.size ? '1px solid #333' : '1px solid transparent',
                       borderRadius: '2px',
                     }}
@@ -404,7 +404,7 @@ export default function AdminPricePage() {
                         fontSize: '10px',
                         letterSpacing: '0.12em',
                         textTransform: 'uppercase',
-                        color: s === listing.size ? '#ffffff' : '#888',
+                        color: s === listing.size ? '#ffffff' : '#aaaaaa',
                       }}
                     >
                       {s}
@@ -414,7 +414,7 @@ export default function AdminPricePage() {
                         fontFamily: "'Cormorant Garamond', Georgia, serif",
                         fontSize: '18px',
                         fontWeight: 300,
-                        color: s === listing.size ? '#ffffff' : '#888',
+                        color: s === listing.size ? '#ffffff' : '#aaaaaa',
                       }}
                     >
                       AED {brandPricing[s]}
@@ -428,7 +428,7 @@ export default function AdminPricePage() {
           {/* AI analysis */}
           <div
             style={{
-              background: '#111',
+              background: '#1e1e1e',
               border: '1px solid #222',
               borderRadius: '2px',
               padding: '20px',
@@ -444,7 +444,7 @@ export default function AdminPricePage() {
                 background: aiLoading ? '#222' : '#1a1a1a',
                 border: '1px solid #333',
                 borderRadius: '2px',
-                color: aiLoading ? '#888' : '#ffffff',
+                color: aiLoading ? '#aaaaaa' : '#ffffff',
                 fontSize: '10px',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
@@ -470,12 +470,12 @@ export default function AdminPricePage() {
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     padding: '12px',
-                    background: '#0d0d0d',
+                    background: '#1a1a1a',
                     borderRadius: '2px',
                     border: '1px solid #222',
                   }}
                 >
-                  <span style={{ fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#888' }}>
+                  <span style={{ fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#aaaaaa' }}>
                     Suggested Price
                   </span>
                   <span
@@ -505,7 +505,7 @@ export default function AdminPricePage() {
 
                 <div>
                   <span style={labelStyle}>Reasoning</span>
-                  <p style={{ fontSize: '12px', color: '#888', lineHeight: 1.6 }}>
+                  <p style={{ fontSize: '12px', color: '#aaaaaa', lineHeight: 1.6 }}>
                     {aiResult.reasoning}
                   </p>
                 </div>
@@ -516,7 +516,7 @@ export default function AdminPricePage() {
           {/* Final price + approve */}
           <div
             style={{
-              background: '#111',
+              background: '#1e1e1e',
               border: '1px solid #222',
               borderRadius: '2px',
               padding: '20px',
@@ -528,7 +528,7 @@ export default function AdminPricePage() {
               <span
                 style={{
                   fontSize: '13px',
-                  color: '#888',
+                  color: '#aaaaaa',
                   whiteSpace: 'nowrap',
                 }}
               >
@@ -540,7 +540,7 @@ export default function AdminPricePage() {
                 onChange={(e) => setFinalPrice(e.target.value)}
                 placeholder="0"
                 style={{
-                  background: '#0d0d0d',
+                  background: '#1a1a1a',
                   border: '1px solid #333',
                   borderRadius: '2px',
                   color: '#ffffff',
@@ -565,7 +565,7 @@ export default function AdminPricePage() {
               style={{
                 width: '100%',
                 background: approving || !finalPrice ? '#cccccc' : '#f0ebe4',
-                color: '#0d0d0d',
+                color: '#1a1a1a',
                 fontSize: '10px',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
@@ -578,7 +578,7 @@ export default function AdminPricePage() {
               {approving ? 'Publishing...' : 'Approve & Publish'}
             </button>
 
-            <p style={{ fontSize: '10px', color: '#555', marginTop: '10px', textAlign: 'center' }}>
+            <p style={{ fontSize: '10px', color: '#777777', marginTop: '10px', textAlign: 'center' }}>
               Minimum price: AED 100 &nbsp;·&nbsp; Listing expires in 24 hours after publishing.
             </p>
           </div>

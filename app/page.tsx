@@ -52,7 +52,7 @@ export default async function HomePage() {
           height: '100vh',
           minHeight: '600px',
           overflow: 'hidden',
-          background: '#0d0d0d',
+          background: '#1a1a1a',
         }}
       >
         {/* Hero image */}
@@ -71,7 +71,7 @@ export default async function HomePage() {
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to right, #0d0d0d 38%, transparent 72%)',
+            background: 'linear-gradient(to right, #1a1a1a 38%, transparent 72%)',
           }}
         />
 
@@ -80,7 +80,7 @@ export default async function HomePage() {
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to top, #0d0d0d 0%, transparent 40%)',
+            background: 'linear-gradient(to top, #1a1a1a 0%, transparent 40%)',
           }}
         />
 
@@ -160,7 +160,7 @@ export default async function HomePage() {
               href="/browse"
               style={{
                 background: '#f0ebe4',
-                color: '#0d0d0d',
+                color: '#1a1a1a',
                 fontSize: '10px',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
@@ -226,7 +226,7 @@ export default async function HomePage() {
               fontSize: '10px',
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: '#888',
+              color: '#aaaaaa',
             }}
           >
             View All
@@ -251,7 +251,7 @@ export default async function HomePage() {
               fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontSize: '20px',
               fontStyle: 'italic',
-              color: '#888',
+              color: '#aaaaaa',
               textAlign: 'center',
               padding: '60px 0',
             }}
@@ -268,7 +268,7 @@ export default async function HomePage() {
           borderBottom: '1px solid #222',
           padding: '80px 24px',
           textAlign: 'center',
-          background: '#0d0d0d',
+          background: '#1a1a1a',
         }}
       >
         <p
@@ -276,7 +276,7 @@ export default async function HomePage() {
             fontSize: '10px',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: '#888',
+            color: '#aaaaaa',
             marginBottom: '20px',
           }}
         >
@@ -311,7 +311,7 @@ export default async function HomePage() {
           href="/sell"
           style={{
             background: '#f0ebe4',
-            color: '#0d0d0d',
+            color: '#1a1a1a',
             fontSize: '10px',
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
@@ -368,7 +368,7 @@ export default async function HomePage() {
                 fontSize: '10px',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: '#888',
+                color: '#aaaaaa',
               }}
             >
               {label}

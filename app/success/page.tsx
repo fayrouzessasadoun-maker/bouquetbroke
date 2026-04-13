@@ -15,7 +15,7 @@ export default function SuccessPage() {
           fontSize: '9px',
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
-          color: '#888',
+          color: '#aaaaaa',
           marginBottom: '20px',
         }}
       >
@@ -62,7 +62,7 @@ export default function SuccessPage() {
           href="/browse"
           style={{
             background: '#f0ebe4',
-            color: '#0d0d0d',
+            color: '#1a1a1a',
             fontSize: '10px',
             letterSpacing: '0.18em',
             textTransform: 'uppercase',

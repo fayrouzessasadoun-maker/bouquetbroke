@@ -39,7 +39,7 @@ function LoginForm() {
   }
 
   const inputStyle = {
-    background: '#0d0d0d',
+    background: '#1a1a1a',
     border: '1px solid #222',
     borderRadius: '2px' as const,
     color: '#ffffff',
@@ -54,7 +54,7 @@ function LoginForm() {
     fontSize: '10px',
     letterSpacing: '0.18em',
     textTransform: 'uppercase' as const,
-    color: '#888',
+    color: '#aaaaaa',
     display: 'block',
     marginBottom: '8px',
   }
@@ -66,7 +66,7 @@ function LoginForm() {
           fontSize: '9px',
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
-          color: '#888',
+          color: '#aaaaaa',
           marginBottom: '12px',
         }}
       >
@@ -120,7 +120,7 @@ function LoginForm() {
           disabled={loading}
           style={{
             background: loading ? '#cccccc' : '#f0ebe4',
-            color: '#0d0d0d',
+            color: '#1a1a1a',
             fontSize: '10px',
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
@@ -139,7 +139,7 @@ function LoginForm() {
         style={{
           marginTop: '32px',
           fontSize: '12px',
-          color: '#888',
+          color: '#aaaaaa',
           textAlign: 'center',
         }}
       >

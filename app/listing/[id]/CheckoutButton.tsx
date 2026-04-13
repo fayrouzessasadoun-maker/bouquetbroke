@@ -46,7 +46,7 @@ export default function CheckoutButton({ listingId, price, title }: Props) {
         style={{
           width: '100%',
           background: loading ? '#cccccc' : '#f0ebe4',
-          color: '#0d0d0d',
+          color: '#1a1a1a',
           fontSize: '10px',
           letterSpacing: '0.18em',
           textTransform: 'uppercase',

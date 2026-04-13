@@ -19,7 +19,7 @@ export default function ListingCard({ listing }: Props) {
       <div
         className="relative overflow-hidden"
         style={{
-          background: '#111',
+          background: '#1e1e1e',
           border: '1px solid #222',
           borderRadius: '2px',
           opacity: inactive ? 0.3 : 1,
@@ -58,8 +58,8 @@ export default function ListingCard({ listing }: Props) {
               fontSize: '9px',
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: '#888',
-              background: 'rgba(13,13,13,0.85)',
+              color: '#aaaaaa',
+              background: 'rgba(26,26,26,0.85)',
               padding: '3px 6px',
             }}
           >
@@ -71,7 +71,7 @@ export default function ListingCard({ listing }: Props) {
             <div
               className="absolute bottom-2 left-2"
               style={{
-                background: 'rgba(13,13,13,0.85)',
+                background: 'rgba(26,26,26,0.85)',
                 padding: '3px 6px',
               }}
             >
@@ -83,7 +83,7 @@ export default function ListingCard({ listing }: Props) {
           {isSold && (
             <div
               className="absolute inset-0 flex items-center justify-center"
-              style={{ background: 'rgba(13,13,13,0.6)' }}
+              style={{ background: 'rgba(26,26,26,0.6)' }}
             >
               <span
                 style={{
@@ -107,7 +107,7 @@ export default function ListingCard({ listing }: Props) {
               fontSize: '9px',
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
-              color: '#888',
+              color: '#aaaaaa',
               marginBottom: '6px',
             }}
           >
@@ -133,7 +133,7 @@ export default function ListingCard({ listing }: Props) {
             style={{
               fontSize: '10px',
               letterSpacing: '0.08em',
-              color: '#888',
+              color: '#aaaaaa',
               marginBottom: '12px',
             }}
           >
@@ -150,7 +150,7 @@ export default function ListingCard({ listing }: Props) {
                     fontFamily: "'Cormorant Garamond', Georgia, serif",
                     fontSize: '13px',
                     fontWeight: 300,
-                    color: '#555',
+                    color: '#777777',
                     textDecoration: 'line-through',
                     marginBottom: '2px',
                     lineHeight: 1,
@@ -175,7 +175,7 @@ export default function ListingCard({ listing }: Props) {
               <button
                 style={{
                   background: '#f0ebe4',
-                  color: '#0d0d0d',
+                  color: '#1a1a1a',
                   fontSize: '10px',
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',

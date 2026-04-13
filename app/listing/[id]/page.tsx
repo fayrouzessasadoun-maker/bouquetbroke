@@ -46,7 +46,7 @@ export default async function ListingPage({ params }: Props) {
     fontSize: '10px',
     letterSpacing: '0.18em',
     textTransform: 'uppercase' as const,
-    color: '#888',
+    color: '#aaaaaa',
     marginBottom: '6px',
     display: 'block',
   }
@@ -60,7 +60,7 @@ export default async function ListingPage({ params }: Props) {
           fontSize: '10px',
           letterSpacing: '0.18em',
           textTransform: 'uppercase',
-          color: '#888',
+          color: '#aaaaaa',
           display: 'inline-block',
           marginBottom: '40px',
         }}
@@ -83,7 +83,7 @@ export default async function ListingPage({ params }: Props) {
               position: 'relative',
               width: '100%',
               aspectRatio: '3/4',
-              background: '#111',
+              background: '#1e1e1e',
               border: '1px solid #222',
               borderRadius: '2px',
               overflow: 'hidden',
@@ -118,7 +118,7 @@ export default async function ListingPage({ params }: Props) {
                 style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'rgba(13,13,13,0.7)',
+                  background: 'rgba(26,26,26,0.7)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -151,7 +151,7 @@ export default async function ListingPage({ params }: Props) {
                 marginBottom: '24px',
               }}
             >
-              <p style={{ fontSize: '12px', color: '#888', letterSpacing: '0.08em' }}>
+              <p style={{ fontSize: '12px', color: '#aaaaaa', letterSpacing: '0.08em' }}>
                 This bouquet has been sold
               </p>
             </div>
@@ -166,7 +166,7 @@ export default async function ListingPage({ params }: Props) {
                 marginBottom: '24px',
               }}
             >
-              <p style={{ fontSize: '12px', color: '#888', letterSpacing: '0.08em' }}>
+              <p style={{ fontSize: '12px', color: '#aaaaaa', letterSpacing: '0.08em' }}>
                 This listing has ended
               </p>
             </div>
@@ -187,7 +187,7 @@ export default async function ListingPage({ params }: Props) {
             >
               {listing.brand}
             </h1>
-            <p style={{ fontSize: '12px', color: '#888', letterSpacing: '0.06em' }}>
+            <p style={{ fontSize: '12px', color: '#aaaaaa', letterSpacing: '0.06em' }}>
               {listing.area}
             </p>
           </div>
@@ -216,7 +216,7 @@ export default async function ListingPage({ params }: Props) {
                       fontFamily: "'Cormorant Garamond', Georgia, serif",
                       fontSize: '26px',
                       fontWeight: 300,
-                      color: '#555',
+                      color: '#777777',
                       textDecoration: 'line-through',
                       lineHeight: 1,
                     }}
@@ -253,7 +253,7 @@ export default async function ListingPage({ params }: Props) {
           {listing.ai_price && isActive && (
             <div
               style={{
-                background: '#111',
+                background: '#1e1e1e',
                 border: '1px solid #222',
                 borderRadius: '2px',
                 padding: '20px',
@@ -275,7 +275,7 @@ export default async function ListingPage({ params }: Props) {
                       alignItems: 'center',
                     }}
                   >
-                    <span style={{ fontSize: '12px', color: '#888', letterSpacing: '0.04em' }}>
+                    <span style={{ fontSize: '12px', color: '#aaaaaa', letterSpacing: '0.04em' }}>
                       {lbl}
                     </span>
                     <span style={{ fontSize: '13px', color: '#cccccc' }}>AED {amount}</span>
@@ -320,7 +320,7 @@ export default async function ListingPage({ params }: Props) {
                   display: 'block',
                   width: '100%',
                   background: '#f0ebe4',
-                  color: '#0d0d0d',
+                  color: '#1a1a1a',
                   fontSize: '10px',
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
@@ -336,7 +336,7 @@ export default async function ListingPage({ params }: Props) {
               <p
                 style={{
                   fontSize: '11px',
-                  color: '#888',
+                  color: '#aaaaaa',
                   lineHeight: 1.7,
                   letterSpacing: '0.02em',
                   textAlign: 'center',

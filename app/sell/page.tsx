@@ -137,7 +137,7 @@ export default function SellPage() {
   }
 
   const inputStyle = {
-    background: '#0d0d0d',
+    background: '#1a1a1a',
     border: '1px solid #222',
     borderRadius: '2px' as const,
     color: '#ffffff',
@@ -151,7 +151,7 @@ export default function SellPage() {
     fontSize: '10px',
     letterSpacing: '0.18em',
     textTransform: 'uppercase' as const,
-    color: '#888',
+    color: '#aaaaaa',
     display: 'block',
     marginBottom: '8px',
   }
@@ -180,7 +180,7 @@ export default function SellPage() {
         </p>
         <button
           onClick={() => router.push('/browse')}
-          style={{ background: '#f0ebe4', color: '#0d0d0d', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px 28px', borderRadius: '2px', border: 'none', cursor: 'pointer' }}
+          style={{ background: '#f0ebe4', color: '#1a1a1a', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px 28px', borderRadius: '2px', border: 'none', cursor: 'pointer' }}
         >
           Browse Listings
         </button>
@@ -191,7 +191,7 @@ export default function SellPage() {
   return (
     <div style={{ maxWidth: '560px', margin: '0 auto', padding: '60px 24px' }}>
       {/* Header */}
-      <p style={{ fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#888', marginBottom: '12px' }}>
+      <p style={{ fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#aaaaaa', marginBottom: '12px' }}>
         Sell Your Bouquet
       </p>
       <h1 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: '40px', fontWeight: 300, color: '#ffffff', marginBottom: '8px' }}>
@@ -211,7 +211,7 @@ export default function SellPage() {
         ))}
       </div>
 
-      <p style={{ fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#888', marginBottom: '32px' }}>
+      <p style={{ fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#aaaaaa', marginBottom: '32px' }}>
         Step {step} of {STEPS.length} — {STEPS[step - 1].label}
       </p>
 
@@ -230,7 +230,7 @@ export default function SellPage() {
 
           {/* Desktop warning */}
           {isMobile === false && (
-            <div style={{ padding: '16px', border: '1px solid #333', borderRadius: '2px', marginBottom: '24px', background: '#111' }}>
+            <div style={{ padding: '16px', border: '1px solid #333', borderRadius: '2px', marginBottom: '24px', background: '#1e1e1e' }}>
               <p style={{ fontSize: '12px', color: '#cccccc', lineHeight: 1.7 }}>
                 📱 Please use a mobile device to take live photos of your bouquet. Camera roll uploads are not accepted.
               </p>
@@ -238,13 +238,13 @@ export default function SellPage() {
           )}
 
           {/* Instruction note */}
-          <p style={{ fontSize: '11px', color: '#888', lineHeight: 1.7, marginBottom: '20px', letterSpacing: '0.02em' }}>
+          <p style={{ fontSize: '11px', color: '#aaaaaa', lineHeight: 1.7, marginBottom: '20px', letterSpacing: '0.02em' }}>
             Take live photos of your bouquet right now. Camera roll uploads are not accepted to ensure bouquet freshness.
           </p>
 
           {/* Photo counter */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-            <span style={{ fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: photos.length >= MIN_PHOTOS ? '#cccccc' : '#888' }}>
+            <span style={{ fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: photos.length >= MIN_PHOTOS ? '#cccccc' : '#aaaaaa' }}>
               {photos.length}/{MIN_PHOTOS} photos required
               {photos.length >= MIN_PHOTOS && photos.length < MAX_PHOTOS && ` · ${photos.length}/${MAX_PHOTOS} taken`}
               {photos.length === MAX_PHOTOS && ` · Maximum reached`}
@@ -264,12 +264,12 @@ export default function SellPage() {
                   />
                   <button
                     onClick={() => removePhoto(i)}
-                    style={{ position: 'absolute', top: '6px', right: '6px', background: 'rgba(13,13,13,0.85)', border: 'none', borderRadius: '2px', color: '#cccccc', fontSize: '11px', width: '24px', height: '24px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    style={{ position: 'absolute', top: '6px', right: '6px', background: 'rgba(26,26,26,0.85)', border: 'none', borderRadius: '2px', color: '#cccccc', fontSize: '11px', width: '24px', height: '24px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                     aria-label="Remove photo"
                   >
                     ✕
                   </button>
-                  <span style={{ position: 'absolute', bottom: '6px', left: '6px', background: 'rgba(13,13,13,0.85)', fontSize: '9px', letterSpacing: '0.12em', color: '#888', padding: '2px 6px' }}>
+                  <span style={{ position: 'absolute', bottom: '6px', left: '6px', background: 'rgba(26,26,26,0.85)', fontSize: '9px', letterSpacing: '0.12em', color: '#aaaaaa', padding: '2px 6px' }}>
                     {i + 1}
                   </span>
                 </div>
@@ -281,7 +281,7 @@ export default function SellPage() {
           {photos.length < MAX_PHOTOS && (
             <button
               onClick={() => fileRef.current?.click()}
-              style={{ width: '100%', padding: '20px', background: '#111', border: '1px dashed #333', borderRadius: '2px', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', marginBottom: '20px' }}
+              style={{ width: '100%', padding: '20px', background: '#1e1e1e', border: '1px dashed #333', borderRadius: '2px', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', marginBottom: '20px' }}
             >
               <span style={{ fontSize: '22px', color: '#444' }}>+</span>
               <span style={{ fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#444' }}>
@@ -299,7 +299,7 @@ export default function SellPage() {
               setError('')
               setStep(2)
             }}
-            style={{ width: '100%', background: photos.length >= MIN_PHOTOS ? '#f0ebe4' : '#222', color: photos.length >= MIN_PHOTOS ? '#0d0d0d' : '#555', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: photos.length >= MIN_PHOTOS ? 'pointer' : 'not-allowed' }}
+            style={{ width: '100%', background: photos.length >= MIN_PHOTOS ? '#f0ebe4' : '#222', color: photos.length >= MIN_PHOTOS ? '#1a1a1a' : '#777777', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: photos.length >= MIN_PHOTOS ? 'pointer' : 'not-allowed' }}
           >
             Continue
           </button>
@@ -320,7 +320,7 @@ export default function SellPage() {
             <button onClick={() => setStep(1)} style={{ flex: 1, background: 'transparent', border: '1px solid #333', borderRadius: '2px', color: '#cccccc', fontSize: '10px', letterSpacing: '0.12em', padding: '14px', cursor: 'pointer' }}>
               Back
             </button>
-            <button onClick={() => { if (!brand) { setError('Please select a brand.'); return } setError(''); setStep(3) }} style={{ flex: 2, background: '#f0ebe4', color: '#0d0d0d', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: 'pointer' }}>
+            <button onClick={() => { if (!brand) { setError('Please select a brand.'); return } setError(''); setStep(3) }} style={{ flex: 2, background: '#f0ebe4', color: '#1a1a1a', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: 'pointer' }}>
               Continue
             </button>
           </div>
@@ -336,12 +336,12 @@ export default function SellPage() {
               <button
                 key={s}
                 onClick={() => setSize(s)}
-                style={{ background: size === s ? '#1a1a1a' : '#111', border: `1px solid ${size === s ? '#444' : '#222'}`, borderRadius: '2px', padding: '16px', cursor: 'pointer', textAlign: 'left' }}
+                style={{ background: size === s ? '#252525' : '#1e1e1e', border: `1px solid ${size === s ? '#444' : '#222'}`, borderRadius: '2px', padding: '16px', cursor: 'pointer', textAlign: 'left' }}
               >
                 <p style={{ fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', color: size === s ? '#ffffff' : '#cccccc', marginBottom: '4px' }}>
                   {s}
                 </p>
-                <p style={{ fontSize: '12px', color: '#888' }}>
+                <p style={{ fontSize: '12px', color: '#aaaaaa' }}>
                   {SIZE_DESCRIPTIONS[s]}
                 </p>
               </button>
@@ -351,7 +351,7 @@ export default function SellPage() {
             <button onClick={() => setStep(2)} style={{ flex: 1, background: 'transparent', border: '1px solid #333', borderRadius: '2px', color: '#cccccc', fontSize: '10px', letterSpacing: '0.12em', padding: '14px', cursor: 'pointer' }}>
               Back
             </button>
-            <button onClick={() => { if (!size) { setError('Please select a size.'); return } setError(''); setStep(4) }} style={{ flex: 2, background: '#f0ebe4', color: '#0d0d0d', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: 'pointer' }}>
+            <button onClick={() => { if (!size) { setError('Please select a size.'); return } setError(''); setStep(4) }} style={{ flex: 2, background: '#f0ebe4', color: '#1a1a1a', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: 'pointer' }}>
               Continue
             </button>
           </div>
@@ -372,7 +372,7 @@ export default function SellPage() {
             <button onClick={() => setStep(3)} style={{ flex: 1, background: 'transparent', border: '1px solid #333', borderRadius: '2px', color: '#cccccc', fontSize: '10px', letterSpacing: '0.12em', padding: '14px', cursor: 'pointer' }}>
               Back
             </button>
-            <button onClick={() => { if (!area) { setError('Please select an area.'); return } setError(''); setStep(5) }} style={{ flex: 2, background: '#f0ebe4', color: '#0d0d0d', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: 'pointer' }}>
+            <button onClick={() => { if (!area) { setError('Please select an area.'); return } setError(''); setStep(5) }} style={{ flex: 2, background: '#f0ebe4', color: '#1a1a1a', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: 'pointer' }}>
               Continue
             </button>
           </div>
@@ -423,7 +423,7 @@ export default function SellPage() {
             <button
               onClick={handleSubmit}
               disabled={loading}
-              style={{ flex: 2, background: loading ? '#888' : '#f0ebe4', color: '#0d0d0d', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: loading ? 'not-allowed' : 'pointer' }}
+              style={{ flex: 2, background: loading ? '#aaaaaa' : '#f0ebe4', color: '#1a1a1a', fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase', padding: '14px', borderRadius: '2px', border: 'none', cursor: loading ? 'not-allowed' : 'pointer' }}
             >
               {loading ? 'Submitting...' : 'Submit Listing'}
             </button>

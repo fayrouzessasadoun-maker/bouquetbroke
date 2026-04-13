@@ -58,7 +58,7 @@ export default function AdminListingsPage() {
   }
 
   const inputStyle = {
-    background: '#0d0d0d',
+    background: '#1a1a1a',
     border: '1px solid #222',
     borderRadius: '2px' as const,
     color: '#ffffff',
@@ -75,7 +75,7 @@ export default function AdminListingsPage() {
             fontSize: '9px',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: '#888',
+            color: '#aaaaaa',
             marginBottom: '12px',
           }}
         >
@@ -107,7 +107,7 @@ export default function AdminListingsPage() {
             type="submit"
             style={{
               background: '#f0ebe4',
-              color: '#0d0d0d',
+              color: '#1a1a1a',
               fontSize: '10px',
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
@@ -140,7 +140,7 @@ export default function AdminListingsPage() {
               fontSize: '9px',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#888',
+              color: '#aaaaaa',
               marginBottom: '8px',
             }}
           >
@@ -182,7 +182,7 @@ export default function AdminListingsPage() {
             fontFamily: "'Cormorant Garamond', Georgia, serif",
             fontSize: '20px',
             fontStyle: 'italic',
-            color: '#888',
+            color: '#aaaaaa',
             padding: '60px 0',
           }}
         >
@@ -207,7 +207,7 @@ export default function AdminListingsPage() {
                       fontSize: '10px',
                       letterSpacing: '0.12em',
                       textTransform: 'uppercase',
-                      color: '#888',
+                      color: '#aaaaaa',
                       padding: '12px 16px',
                       fontWeight: 400,
                     }}
@@ -251,7 +251,7 @@ export default function AdminListingsPage() {
                   <td style={{ padding: '12px 16px', color: '#cccccc' }}>
                     {listing.area}
                   </td>
-                  <td style={{ padding: '12px 16px', color: '#888' }}>
+                  <td style={{ padding: '12px 16px', color: '#aaaaaa' }}>
                     {new Date(listing.created_at).toLocaleString('en-GB', {
                       day: '2-digit',
                       month: 'short',

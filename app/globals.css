@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --bb-bg: #0d0d0d;
+  --bb-bg: #1a1a1a;
   --bb-primary: #ffffff;
   --bb-secondary: #cccccc;
   --bb-subtle: #cccccc;
@@ -19,7 +19,7 @@
 
 html,
 body {
-  background: #0d0d0d;
+  background: #1a1a1a;
   color: #ffffff;
   font-family: 'Jost', system-ui, sans-serif;
   font-weight: 300;
@@ -40,7 +40,7 @@ a {
 input,
 textarea,
 select {
-  background: #111;
+  background: #1e1e1e;
   border: 1px solid #222;
   border-radius: 2px;
   color: #ffffff;
@@ -65,7 +65,7 @@ textarea::placeholder {
 }
 
 select option {
-  background: #111;
+  background: #1e1e1e;
   color: #ffffff;
 }
 
@@ -92,7 +92,7 @@ select option {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0d0d0d;
+  background: #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb {

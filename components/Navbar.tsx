@@ -37,7 +37,7 @@ export default function Navbar() {
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        background: 'rgba(13,13,13,0.95)',
+        background: 'rgba(26,26,26,0.95)',
         backdropFilter: 'blur(4px)',
         borderBottom: '1px solid #222',
       }}
@@ -105,7 +105,7 @@ export default function Navbar() {
                     style={{
                       fontSize: '10px',
                       letterSpacing: '0.08em',
-                      color: '#888',
+                      color: '#aaaaaa',
                       maxWidth: '160px',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
@@ -150,7 +150,7 @@ export default function Navbar() {
                       fontSize: '10px',
                       letterSpacing: '0.18em',
                       textTransform: 'uppercase',
-                      color: '#0d0d0d',
+                      color: '#1a1a1a',
                       background: '#f0ebe4',
                       padding: '8px 16px',
                       borderRadius: '2px',

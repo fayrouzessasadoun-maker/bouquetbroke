@@ -18,7 +18,7 @@ export default function LiveTicker({ listings }: Props) {
       style={{
         borderTop: '1px solid #222',
         borderBottom: '1px solid #222',
-        background: '#0d0d0d',
+        background: '#1a1a1a',
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         padding: '10px 0',
@@ -45,7 +45,7 @@ export default function LiveTicker({ listings }: Props) {
                 fontSize: '10px',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: '#888',
+                color: '#aaaaaa',
               }}
             >
               {listing.brand} &middot; {listing.area} &middot;{' '}
